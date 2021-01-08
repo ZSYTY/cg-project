@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="mainView.css">
+    <script src="console.js" type="text/javascript" charset="utf-8"> </script>
+    <style>
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body onload="start()">
+    <div id="main">
+        test
+        <div id="consoleDiv"></div>
+        <button onclick="consoleView()">console</button>
+
+        <div style="background-color:blueviolet; width: 20px;height: 20px;position: absolute;top: 50%;left: 50%;"
+            id="fuck"></div>
+
+        <div class="buttonDiv" style=" right: 10vw;">
+            <table class="buttonTable" border="0">
+                <tr class="buttonTr">
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate0">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr class="buttonTr">
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate270">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate90">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="buttonTr">
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate180">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="buttonDiv" style=" left: 10vw;">
+            <table class="buttonTable" border="0">
+                <tr class="buttonTr">
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate0" id="button0">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr class="buttonTr">
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate270" id="button3">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate90" id="button1">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="buttonTr">
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate180" id="button2">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
