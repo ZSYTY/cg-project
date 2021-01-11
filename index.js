@@ -14,6 +14,7 @@ var width = document.getElementById("mazePre").offsetWidth;
 function start_all() {
     start();
     initGL();
+    init();
 }
 
 //初始化渲染器
@@ -73,7 +74,7 @@ function initAxes() {
 
 function initBase() {
     let texture_floor = new THREE.TextureLoader().load("assets/floor.jpg"); // 地板纹理
-    let material_floor = new THREE.MeshLambertMaterial({map: texture_floor});
+    let material_floor = new THREE.MeshLambertMaterial({ map: texture_floor });
     texture_floor.wrapS = THREE.MirroredRepeatWrapping; //设置水平方向无限循环
     texture_floor.wrapT = THREE.MirroredRepeatWrapping; //设置垂直方向无限循环
     texture_floor.repeat.set(1000, 1000);
@@ -86,7 +87,7 @@ function initBase() {
 
 function initCubeBarriers(maze) {
     let texture = new THREE.TextureLoader().load("assets/wooden_wall.jpg"); // 地板纹理
-    let material = new THREE.MeshLambertMaterial({map: texture});
+    let material = new THREE.MeshLambertMaterial({ map: texture });
     texture.wrapS = THREE.MirroredRepeatWrapping; //设置水平方向无限循环
     texture.wrapT = THREE.MirroredRepeatWrapping; //设置垂直方向无限循环
     texture.repeat.set(2, 2);
