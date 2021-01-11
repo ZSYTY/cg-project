@@ -19,7 +19,7 @@ function start_all() {
 //初始化渲染器
 function initRenderer() {
     renderer = new THREE.WebGLRenderer(); //实例化渲染器
-    renderer.setSize(document.getElementById("mazePre").offsetWidth,); //设置宽和高
+    renderer.setSize(width, height); //设置宽和高
     document.getElementById("mazePre").appendChild(renderer.domElement);//添加到dom
 }
 
@@ -31,8 +31,7 @@ function initScene() {
 
 //初始化相机
 function initCamera() {
-    camera = new THREE.PerspectiveCamera(45, document.getElementById("mazePre").offsetWidth
-        / document.getElementById("mazePre").offsetHeight, 0.1, 20000);
+    camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 20000);
     // camera.position.set(0, 800, -800);
     camera.position.set(init_camera_pos.x, init_camera_pos.y, init_camera_pos.z);
     camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
