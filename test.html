@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" type="text/css" href="mainView.css">
-    <script src="baseControl.js" type="text/javascript" charset="utf-8"> </script>
+    <script src="baseControl.js" charset="utf-8"> </script>
     <style>
         * {
             -webkit-user-select: none;
@@ -16,7 +16,7 @@
     </style>
 </head>
 
-<body onload="start()">
+<body onload="start_all()">
 
     <div id="main">
         <div id="start" class="full">
@@ -158,8 +158,8 @@
                 <div id="titlePre">
                     这里放个会转回方法缩小镜头拉进拉远的游戏名
                 </div>
-                <div id="mazePre">
-                    这里放个迷宫，外加光源效果/材质效果
+                <div id="mazePre" onload="init()">
+
                 </div>
                 <div id="humanPre">
                     这里放个人物模型
@@ -258,6 +258,11 @@
             </div>
         </div>
     </div>
+    <script src="three.js"></script>
+    <script src="stats.min.js"></script>
+    <script src="dat.gui.min.js"></script>
+    <script src="maze.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
