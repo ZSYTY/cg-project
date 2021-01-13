@@ -13,7 +13,7 @@ function init() {
     var rotate_camera = true;
     var init_camera_pos = new THREE.Vector3(0.0, -20.0, 10.0);
 
-    var parentDOM = document.getElementById('titlePre');
+    var parentDOM = document.getElementById('humanPre');
     //  console.log(parentDOM);
     const width = parentDOM.offsetWidth, height = parentDOM.offsetHeight
 
@@ -85,21 +85,31 @@ function init() {
         scene.add(base_floor);
     }
 
-    function initTitle() {
+    function initCharater(){
+
+    }
+
+    function initCharacter() {
         let loader = new OBJLoader2();
-        loader.load('assets/title.obj', function (model) {
+        loader.load('assets/ch1.obj', function (model) {
+
             let bb = new THREE.Box3().setFromObject(model);
+            // console.log(bb.min+bb.max);
+            console.log(new THREE.Box3().setFromObject(model));
             model.position.set(-(bb.min.x + bb.max.x) / 2, -(bb.min.y + bb.max.y) / 2, -(bb.min.z + bb.max.z) / 2);
+            console.log(new THREE.Box3().setFromObject(model));
             model.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0).normalize(), Math.PI / 2);
+            console.log(new THREE.Box3().setFromObject(model));
             bb = new THREE.Box3().setFromObject(model);
             model.position.set(model.position.x - (bb.min.x + bb.max.x) / 2,
                 model.position.y - (bb.min.y + bb.max.y) / 2, model.position.z - (bb.min.z + bb.max.z) / 2);
-            let material = new THREE.MeshPhongMaterial({color: '#FFFF80'});
-            model.traverse(child => {
-                if (child instanceof THREE.Mesh) {
-                    child.material = material;
-                }
-            });
+            console.log(new THREE.Box3().setFromObject(model));
+            // let material = new THREE.MeshPhongMaterial({color: '#FFFF80'});
+            // model.traverse(child => {
+            //     if (child instanceof THREE.Mesh) {
+            //         child.material = material;
+            //     }
+            // });
             scene.add(model);
         }, null, null, null);
     }
@@ -127,7 +137,7 @@ function init() {
     function initMesh() {
         // initBase();
         // initCubeBarriers(primMaze(10, 10));
-        initTitle();
+        initCharacter();
     }
 
     let t0 = new Date()
@@ -222,8 +232,10 @@ function init() {
 //初始化函数，页面加载完成是调用
     initRenderer();
     initScene();
+    console.log(scene);
     initLight();
     initCamera();
+    console.log(camera);
     initMesh();
     initAxes();
     initStats();

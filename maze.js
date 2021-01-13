@@ -79,7 +79,6 @@ export default function(r, c) {
     process(a);
     a[0][1] = 0;
     a[a.length - 1][a[a.length - 1].length - 2] = 0;
-    console.log(a);
     return a;
     //返回一个二维数组，行的数据为2r+1个,列的数据为2c+1个
 }

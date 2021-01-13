@@ -15,7 +15,7 @@ function init() {
 
 //初始化渲染器
     function initRenderer() {
-        renderer = new THREE.WebGLRenderer(); //实例化渲染器
+        renderer = new THREE.WebGLRenderer({antialias:true,alpha:false}); //实例化渲染器
         renderer.setSize(width, height); //设置宽和高
         parentDOM.appendChild(renderer.domElement); //添加到dom
     }
@@ -76,7 +76,6 @@ function init() {
         base_floor = new THREE.Mesh(new THREE.BoxBufferGeometry(10000, 10000, 10), material_floor);
         base_floor.position.z = -5.5;
         base_floor.receiveShadow = true;
-        console.log(base_floor);
         scene.add(base_floor);
     }
 
@@ -183,14 +182,12 @@ function init() {
 //初始化函数，页面加载完成是调用
     initRenderer();
     initScene();
-    console.log(scene);
     initLight();
     initCamera();
-    console.log(camera);
     initMesh();
     initAxes();
     initStats();
-    initGui();
+    // initGui();
 
     animate();
 }

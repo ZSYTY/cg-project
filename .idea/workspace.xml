@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/ch1.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pre_character.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cg-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cg-project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maze.js" beforeDir="false" afterPath="$PROJECT_DIR$/maze.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre.js" beforeDir="false" afterPath="$PROJECT_DIR$/pre.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pre_title.js" beforeDir="false" afterPath="$PROJECT_DIR$/pre_title.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/temp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -22,22 +32,29 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1mvT4VsFbZVtBLvkxzyqHmRz8BD" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Documents\Computer Graphics\final\cg-project\assets" />
+      <recent name="D:\Documents\Computer Graphics\final\cg-project" />
       <recent name="D:\Documents\Computer Graphics\finalproject\cg-project" />
     </key>
   </component>
@@ -50,7 +67,8 @@
       <option name="presentableId" value="Default" />
       <updated>1610372874180</updated>
       <workItem from="1610372875492" duration="1235000" />
-      <workItem from="1610376132350" duration="14443000" />
+      <workItem from="1610376132350" duration="22487000" />
+      <workItem from="1610545423737" duration="1692000" />
     </task>
     <task id="LOCAL-00001" summary="模块化">
       <created>1610525637705</created>
@@ -59,14 +77,23 @@
       <option name="project" value="LOCAL" />
       <updated>1610525637706</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="模块化2">
+      <created>1610526915112</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610526915112</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="模块化" />
-    <option name="LAST_COMMIT_MESSAGE" value="模块化" />
+    <MESSAGE value="模块化2" />
+    <option name="LAST_COMMIT_MESSAGE" value="模块化2" />
   </component>
 </project>
