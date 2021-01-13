@@ -14,7 +14,7 @@ var width = document.getElementById("mazePre").offsetWidth;
 function start_all() {
     start();
     initGL();
-    init();
+
 }
 
 //初始化渲染器
@@ -32,7 +32,7 @@ function initScene() {
 
 //初始化相机
 function initCamera() {
-    camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 20000);
+    camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 20000);
     // camera.position.set(0, 800, -800);
     camera.position.set(init_camera_pos.x, init_camera_pos.y, init_camera_pos.z);
     camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
@@ -116,13 +116,13 @@ function animate() {
     let t = t1 - t0; // 时间差
 
     if (rotate_camera) {
-        // camera.position = new THREE.Vector3(camera.position.x+0.01, camera.position.y+0.01, camera.position.z);
-        // let r = Math.sqrt(Math.pow(camera.position.x - camera_lookat.x, 2) + Math.pow(camera.position.y - camera_lookat.y, 2));
-        // let theta = Math.atan2(camera.position.y - camera_lookat.y, camera.position.x - camera_lookat.x);
-        // theta += 0.02;
-        // camera.position.x = Math.cos(theta) * r + camera_lookat.x;
-        // camera.position.y = Math.sin(theta) * r + camera_lookat.y;
-        // camera.rotateY(0.02);
+        camera.position = new THREE.Vector3(camera.position.x + 0.01, camera.position.y + 0.01, camera.position.z);
+        let r = Math.sqrt(Math.pow(camera.position.x - camera_lookat.x, 2) + Math.pow(camera.position.y - camera_lookat.y, 2));
+        let theta = Math.atan2(camera.position.y - camera_lookat.y, camera.position.x - camera_lookat.x);
+        theta += 0.02;
+        camera.position.x = Math.cos(theta) * r + camera_lookat.x;
+        camera.position.y = Math.sin(theta) * r + camera_lookat.y;
+        camera.rotateY(0.02);
         camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
     }
 
