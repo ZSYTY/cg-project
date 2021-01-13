@@ -2,22 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/floor.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/wooden_wall.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dat.gui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/maze.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stats.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/three.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/baseControl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/title.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pre.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pre_title.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maze.js" beforeDir="false" afterPath="$PROJECT_DIR$/maze.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/three.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -28,14 +35,17 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\Computer Graphics\final\cg-project\assets" />
       <recent name="D:\Documents\Computer Graphics\finalproject\cg-project" />
     </key>
   </component>
@@ -48,6 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610372874180</updated>
       <workItem from="1610372875492" duration="1235000" />
+      <workItem from="1610376132350" duration="13239000" />
     </task>
     <servers />
   </component>

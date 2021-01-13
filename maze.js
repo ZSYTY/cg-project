@@ -6,10 +6,10 @@ function randInt(min, max) {
     var result;
     result = st + (Math.ceil(Math.random() * step)) - 1;
     return result;
-}
+};
 
 // 生成迷宫
-function primMaze(r, c) {
+export default function(r, c) {
     //初始化数组
     function init(r, c) {
         var a = new Array(2 * r + 1);

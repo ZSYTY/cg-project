@@ -16,7 +16,7 @@
     </style>
 </head>
 
-<body onload="start_all()">
+<body onload="var body_loaded = true;">
 
     <div id="main">
         <div id="start" class="full">
@@ -158,7 +158,7 @@
                 <div id="titlePre">
                     这里放个会转回方法缩小镜头拉进拉远的游戏名
                 </div>
-                <div id="mazePre" onload="init()">
+                <div id="mazePre">
 
                 </div>
                 <div id="humanPre">
@@ -258,11 +258,11 @@
             </div>
         </div>
     </div>
-    <script src="three.js"></script>
+<!--    <script type="module" src="three.js-master/three.js-master/build/three.min.js"></script>-->
+<!--    <script type="module" src="three.js-master/three.js-master/examples/jsm/loaders/OBJLoader2.js"></script>-->
     <script src="stats.min.js"></script>
     <script src="dat.gui.min.js"></script>
-    <script src="maze.js"></script>
-    <script src="index.js"></script>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>
