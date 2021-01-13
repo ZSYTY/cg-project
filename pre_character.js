@@ -1,5 +1,6 @@
 import * as THREE from './three.js-master/three.js-master/build/three.module.js';
-import {OBJLoader2} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader2.js";
+import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
+import {MTLLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
 
 function init() {
     var renderer, camera, scene, stats, controls, gui, rotate = true, light;
@@ -19,7 +20,7 @@ function init() {
 
 //初始化渲染器
     function initRenderer() {
-        renderer = new THREE.WebGLRenderer({antialias:true,alpha:false}); //实例化渲染器
+        renderer = new THREE.WebGLRenderer({antialias: true, alpha: false}); //实例化渲染器
         renderer.setSize(width, height); //设置宽和高
         parentDOM.appendChild(renderer.domElement); //添加到dom
     }
@@ -59,7 +60,7 @@ function init() {
         scene.add(light);
 
         var lightg = new THREE.DirectionalLight(0xffffff); //添加了一个白色的平行光
-        lightg.position.set(1,1,1); //设置光的方向
+        lightg.position.set(1, 1, 1); //设置光的方向
         scene.add(lightg); //添加到场景
 
         //添加一个全局环境光
@@ -85,33 +86,37 @@ function init() {
         scene.add(base_floor);
     }
 
-    function initCharater(){
+    function initCharater() {
 
     }
 
     function initCharacter() {
-        let loader = new OBJLoader2();
-        loader.load('assets/ch1.obj', function (model) {
-
-            let bb = new THREE.Box3().setFromObject(model);
-            // console.log(bb.min+bb.max);
-            console.log(new THREE.Box3().setFromObject(model));
-            model.position.set(-(bb.min.x + bb.max.x) / 2, -(bb.min.y + bb.max.y) / 2, -(bb.min.z + bb.max.z) / 2);
-            console.log(new THREE.Box3().setFromObject(model));
-            model.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0).normalize(), Math.PI / 2);
-            console.log(new THREE.Box3().setFromObject(model));
-            bb = new THREE.Box3().setFromObject(model);
-            model.position.set(model.position.x - (bb.min.x + bb.max.x) / 2,
-                model.position.y - (bb.min.y + bb.max.y) / 2, model.position.z - (bb.min.z + bb.max.z) / 2);
-            console.log(new THREE.Box3().setFromObject(model));
-            // let material = new THREE.MeshPhongMaterial({color: '#FFFF80'});
-            // model.traverse(child => {
-            //     if (child instanceof THREE.Mesh) {
-            //         child.material = material;
-            //     }
-            // });
-            scene.add(model);
-        }, null, null, null);
+        let mloader = new MTLLoader();
+        mloader.load('assets/Memoria miku/Memoria miku.mtl', function (materials) {
+            materials.preload();
+            let loader = new OBJLoader();
+            loader.setMaterials(materials);
+            loader.load('assets/Memoria miku/Memoria miku.obj', function (model) {
+                let bb = new THREE.Box3().setFromObject(model);
+                // console.log(bb.min+bb.max);
+                console.log(new THREE.Box3().setFromObject(model));
+                model.position.set(-(bb.min.x + bb.max.x) / 2, -(bb.min.y + bb.max.y) / 2, -(bb.min.z + bb.max.z) / 2);
+                console.log(new THREE.Box3().setFromObject(model));
+                model.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0).normalize(), Math.PI / 2);
+                console.log(new THREE.Box3().setFromObject(model));
+                bb = new THREE.Box3().setFromObject(model);
+                model.position.set(model.position.x - (bb.min.x + bb.max.x) / 2,
+                    model.position.y - (bb.min.y + bb.max.y) / 2, model.position.z - (bb.min.z + bb.max.z) / 2);
+                console.log(new THREE.Box3().setFromObject(model));
+                // let material = new THREE.MeshPhongMaterial({color: '#FFFF80'});
+                // model.traverse(child => {
+                //     if (child instanceof THREE.Mesh) {
+                //         child.material = material;
+                //     }
+                // });
+                scene.add(model);
+            }, null, null, null);
+        });
     }
 
     function initCubeBarriers(maze) {
@@ -146,7 +151,7 @@ function init() {
     function animate() {
         let t1 = new Date(); //本次时间
         let t = t1 - t0; // 时间差
-        light.position.set(light.position.x+0.1 / t * signdcz, light.position.y,light.position.z);
+        light.position.set(light.position.x + 0.1 / t * signdcz, light.position.y, light.position.z);
         if (light.position.z > 2) {
             signdcz = -1;
         } else if (light.position.z < -2) {

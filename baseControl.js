@@ -114,7 +114,7 @@ function start() {
     btn.onmousedown = function (e) {
         if (e.button === 0) {
             var b = window.document.getElementById("start");
-            b.style.visibility = "hidden";
+            b.parentNode.removeChild(b);
             var c = window.document.getElementById("game");
             c.style.visibility = "visible";
         }

@@ -1,11 +1,15 @@
 import * as THREE from './three.js-master/three.js-master/build/three.module.js';
 import primMaze from './maze.js'
+import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
+import {MTLLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
+
 function init() {
-    var renderer, camera, scene, stats, controls, gui, rotate = true;
+    var renderer, camera, scene, stats, controls, gui, rotate = true, light;
+    var chara;
 
     var base_floor;
     const barrier_size = 1;
-    const barrier_height = 1;
+    const barrier_height = 0.5;
     var camera_lookat = new THREE.Vector3(0.0, 0.0, 10.0);
     var rotate_camera = true;
     var init_camera_pos = new THREE.Vector3(0.0, -20.0, 30.0);
@@ -17,7 +21,7 @@ function init() {
 
 //初始化渲染器
     function initRenderer() {
-        renderer = new THREE.WebGLRenderer({antialias:true,alpha:false}); //实例化渲染器
+        renderer = new THREE.WebGLRenderer({antialias: true, alpha: false}); //实例化渲染器
         renderer.setSize(width, height); //设置宽和高
         parentDOM.appendChild(renderer.domElement); //添加到dom
     }
@@ -38,26 +42,26 @@ function init() {
 
 //创建灯光
     function initLight() {
-        // scene.add(new THREE.AmbientLight(0x444444));
-        //
-        // light = new THREE.DirectionalLight(0xaaaaaa);
-        // light.position.set(0, 200, 100);
-        // light.lookAt(new THREE.Vector3());
-        //
-        // light.castShadow = true;
-        // light.shadow.camera.top = 180;
-        // light.shadow.camera.bottom = -180;
-        // light.shadow.camera.left = -180;
-        // light.shadow.camera.right = 180;
-        //
-        // //告诉平行光需要开启阴影投射
-        // light.castShadow = true;
-        //
-        // scene.add(light);
+        scene.add(new THREE.AmbientLight(0x111111));
 
-        var light = new THREE.DirectionalLight(0xffffff); //添加了一个白色的平行光
-        light.position.set(20, 50, 50); //设置光的方向
-        scene.add(light); //添加到场景
+        light = new THREE.DirectionalLight(0xaaaaaa);
+        light.position.set(0, 200, 100);
+        light.lookAt(new THREE.Vector3());
+
+        light.castShadow = true;
+        light.shadow.camera.top = 180;
+        light.shadow.camera.bottom = -180;
+        light.shadow.camera.left = -180;
+        light.shadow.camera.right = 180;
+
+        //告诉平行光需要开启阴影投射
+        light.castShadow = true;
+
+        scene.add(light);
+
+        var lightg = new THREE.DirectionalLight(0xffffff); //添加了一个白色的平行光
+        lightg.position.set(20, 50, 50); //设置光的方向
+        scene.add(lightg); //添加到场景
 
         //添加一个全局环境光
         scene.add(new THREE.AmbientLight(0x222222));
@@ -100,10 +104,44 @@ function init() {
         }
     }
 
+    function initCharacter() {
+        let mloader = new MTLLoader();
+        mloader.load('assets/Memoria miku/Memoria miku.mtl', function (materials) {
+            materials.preload();
+            let loader = new OBJLoader();
+            loader.setMaterials(materials);
+            loader.load('assets/Memoria miku/Memoria miku.obj', function (model) {
+                let bb = new THREE.Box3().setFromObject(model);
+                let scale = barrier_size * 0.6 / Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
+                scale = 0.1;
+                model.scale.set(scale, scale, scale);
+                // console.log(bb.min+bb.max);
+                console.log(new THREE.Box3().setFromObject(model));
+                model.position.set(-(bb.min.x + bb.max.x) / 2, -(bb.min.y + bb.max.y) / 2, -(bb.min.z + bb.max.z) / 2);
+                console.log(new THREE.Box3().setFromObject(model));
+                model.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0).normalize(), Math.PI / 2);
+                console.log(new THREE.Box3().setFromObject(model));
+                bb = new THREE.Box3().setFromObject(model);
+                model.position.set(model.position.x - (bb.min.x + bb.max.x) / 2,
+                    model.position.y - (bb.min.y + bb.max.y) / 2, model.position.z - (bb.min.z + bb.max.z) / 2);
+                console.log(new THREE.Box3().setFromObject(model));
+                // let material = new THREE.MeshPhongMaterial({color: '#FFFF80'});
+                // model.traverse(child => {
+                //     if (child instanceof THREE.Mesh) {
+                //         child.material = material;
+                //     }
+                // });
+                scene.add(model);
+                chara = model;
+            }, null, null, null);
+        });
+    }
+
 //创建模型
     function initMesh() {
         initBase();
         initCubeBarriers(primMaze(10, 10));
+        initCharacter();
     }
 
     let t0 = new Date()
@@ -112,17 +150,17 @@ function init() {
         let t1 = new Date(); //本次时间
         let t = t1 - t0; // 时间差
 
-        if (rotate_camera) {
-            camera.position.set(camera.position.x + 0.01, camera.position.y + 0.01, camera.position.z);
-            let r = Math.sqrt(Math.pow(camera.position.x - camera_lookat.x, 2) + Math.pow(camera.position.y - camera_lookat.y, 2));
-            let theta = Math.atan2(camera.position.y - camera_lookat.y, camera.position.x - camera_lookat.x);
-            theta += 0.1 / t;
-            camera.position.x = Math.cos(theta) * r + camera_lookat.x;
-            camera.position.y = Math.sin(theta) * r + camera_lookat.y;
-            // camera.rotateY(0.02);
-            camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
-            camera.up = new THREE.Vector3(0, 0, 1);
-        }
+        // if (rotate_camera) {
+        //     camera.position.set(camera.position.x + 0.01, camera.position.y + 0.01, camera.position.z);
+        //     let r = Math.sqrt(Math.pow(camera.position.x - camera_lookat.x, 2) + Math.pow(camera.position.y - camera_lookat.y, 2));
+        //     let theta = Math.atan2(camera.position.y - camera_lookat.y, camera.position.x - camera_lookat.x);
+        //     theta += 0.1 / t;
+        //     camera.position.x = Math.cos(theta) * r + camera_lookat.x;
+        //     camera.position.y = Math.sin(theta) * r + camera_lookat.y;
+        //     // camera.rotateY(0.02);
+        //     camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
+        //     camera.up = new THREE.Vector3(0, 0, 1);
+        // }
 
         stats.update(); //更新性能检测框
 
@@ -150,34 +188,46 @@ function init() {
             camera_lookat_y: 0,
             camera_lookat_z: 10,
             rotate_camera: true,
+            // new
+            chara_pos_x: 0,
+            chara_pos_y: 0,
         };
 
         gui = new dat.GUI();
-        gui.add(controls, "camera_position_x").onChange(function (e) {
-            camera.position.x = e;
+        // gui.add(controls, "camera_position_x").onChange(function (e) {
+        //     camera.position.x = e;
+        // });
+        // gui.add(controls, "camera_position_y").onChange(function (e) {
+        //     camera.position.y = e;
+        // });
+        // gui.add(controls, "camera_position_z").onChange(function (e) {
+        //     camera.position.z = e;
+        // });
+        // gui.add(controls, "camera_lookat_x").onChange(function (e) {
+        //     camera_lookat.x = e;
+        //     camera.lookAt(camera_lookat);
+        // });
+        // gui.add(controls, "camera_lookat_y").onChange(function (e) {
+        //     camera_lookat.y = e;
+        //     camera.lookAt(camera_lookat);
+        // });
+        // gui.add(controls, "camera_lookat_z").onChange(function (e) {
+        //     camera_lookat.z = e;
+        //     camera.lookAt(camera_lookat);
+        // });
+        // gui.add(controls, "rotate_camera").onChange(function (e) {
+        //     rotate_camera = e;
+        // });
+        gui.add(controls, "chara_pos_x").onChange(function (e) {
+            chara.position.x = e;
         });
-        gui.add(controls, "camera_position_y").onChange(function (e) {
-            camera.position.y = e;
-        });
-        gui.add(controls, "camera_position_z").onChange(function (e) {
-            camera.position.z = e;
-        });
-        gui.add(controls, "camera_lookat_x").onChange(function (e) {
-            camera_lookat.x = e;
-            camera.lookAt(camera_lookat);
-        });
-        gui.add(controls, "camera_lookat_y").onChange(function (e) {
-            camera_lookat.y = e;
-            camera.lookAt(camera_lookat);
-        });
-        gui.add(controls, "camera_lookat_z").onChange(function (e) {
-            camera_lookat.z = e;
-            camera.lookAt(camera_lookat);
-        });
-        gui.add(controls, "rotate_camera").onChange(function (e) {
-            rotate_camera = e;
+        gui.add(controls, "chara_pos_y").onChange(function (e) {
+            chara.position.y = e;
         });
 
+    }
+
+    function initPosition() {
 
     }
 
@@ -189,7 +239,8 @@ function init() {
     initMesh();
     initAxes();
     initStats();
-    // initGui();
+
+    initGui();
 
     animate();
 }
