@@ -88,6 +88,10 @@ function init() {
     function initTitle() {
         let loader = new OBJLoader2();
         loader.load( 'assets/title.obj', function(model){
+            // console.log(model.);
+            console.log(model.boundingBox);
+            model.position.z = -44;
+            model.rotateOnAxis(new THREE.Vector3(1,0,0),-90);
             scene.add(model);
         },null,null,null);
     }
@@ -114,7 +118,7 @@ function init() {
 //创建模型
     function initMesh() {
         // initBase();
-        initCubeBarriers(primMaze(10, 10));
+        // initCubeBarriers(primMaze(10, 10));
         initTitle();
     }
 

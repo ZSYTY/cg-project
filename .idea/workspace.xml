@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/title.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pre.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pre_title.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maze.js" beforeDir="false" afterPath="$PROJECT_DIR$/maze.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/three.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_title.js" beforeDir="false" afterPath="$PROJECT_DIR$/pre_title.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,11 +50,23 @@
       <option name="presentableId" value="Default" />
       <updated>1610372874180</updated>
       <workItem from="1610372875492" duration="1235000" />
-      <workItem from="1610376132350" duration="13239000" />
+      <workItem from="1610376132350" duration="14443000" />
     </task>
+    <task id="LOCAL-00001" summary="模块化">
+      <created>1610525637705</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610525637706</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="模块化" />
+    <option name="LAST_COMMIT_MESSAGE" value="模块化" />
   </component>
 </project>
