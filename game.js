@@ -1,21 +1,19 @@
 import * as THREE from './three.js-master/three.js-master/build/three.module.js';
-import {OBJLoader2} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader2.js";
-
+import primMaze from './maze.js'
 function init() {
-    var renderer, camera, scene, stats, controls, gui, rotate = true, light;
-
+    var renderer, camera, scene, stats, controls, gui, rotate = true;
 
     var base_floor;
-    var title_mesh;
     const barrier_size = 1;
     const barrier_height = 1;
     var camera_lookat = new THREE.Vector3(0.0, 0.0, 10.0);
     var rotate_camera = true;
-    var init_camera_pos = new THREE.Vector3(0.0, -20.0, 10.0);
+    var init_camera_pos = new THREE.Vector3(0.0, -20.0, 30.0);
 
-    var parentDOM = document.getElementById('titlePre');
-    //  console.log(parentDOM);
-    const width = parentDOM.offsetWidth, height = parentDOM.offsetHeight
+    var parentDOM = document.getElementById('game');
+    const width = parentDOM.offsetWidth, height = parentDOM.offsetHeight;
+    console.log(width);
+    console.log(height);
 
 //初始化渲染器
     function initRenderer() {
@@ -40,30 +38,29 @@ function init() {
 
 //创建灯光
     function initLight() {
-        scene.add(new THREE.AmbientLight(0x444444));
-
-        light = new THREE.DirectionalLight(0xaaaaaa);
+        // scene.add(new THREE.AmbientLight(0x444444));
+        //
+        // light = new THREE.DirectionalLight(0xaaaaaa);
         // light.position.set(0, 200, 100);
-        light.lookAt(new THREE.Vector3());
-        light.position.set(0, -1, 0);
+        // light.lookAt(new THREE.Vector3());
+        //
+        // light.castShadow = true;
+        // light.shadow.camera.top = 180;
+        // light.shadow.camera.bottom = -180;
+        // light.shadow.camera.left = -180;
+        // light.shadow.camera.right = 180;
+        //
+        // //告诉平行光需要开启阴影投射
+        // light.castShadow = true;
+        //
+        // scene.add(light);
 
-        light.castShadow = true;
-        light.shadow.camera.top = 180;
-        light.shadow.camera.bottom = -180;
-        light.shadow.camera.left = -180;
-        light.shadow.camera.right = 180;
-
-        //告诉平行光需要开启阴影投射
-        light.castShadow = true;
-
-        scene.add(light);
-
-        var lightg = new THREE.DirectionalLight(0xffffff); //添加了一个白色的平行光
-        lightg.position.set(1,1,1); //设置光的方向
-        scene.add(lightg); //添加到场景
+        var light = new THREE.DirectionalLight(0xffffff); //添加了一个白色的平行光
+        light.position.set(20, 50, 50); //设置光的方向
+        scene.add(light); //添加到场景
 
         //添加一个全局环境光
-        // scene.add(new THREE.AmbientLight(0x222222));
+        scene.add(new THREE.AmbientLight(0x222222));
 
     }
 
@@ -81,27 +78,7 @@ function init() {
         base_floor = new THREE.Mesh(new THREE.BoxBufferGeometry(10000, 10000, 10), material_floor);
         base_floor.position.z = -5.5;
         base_floor.receiveShadow = true;
-        console.log(base_floor);
         scene.add(base_floor);
-    }
-
-    function initTitle() {
-        let loader = new OBJLoader2();
-        loader.load('assets/title.obj', function (model) {
-            let bb = new THREE.Box3().setFromObject(model);
-            model.position.set(-(bb.min.x + bb.max.x) / 2, -(bb.min.y + bb.max.y) / 2, -(bb.min.z + bb.max.z) / 2);
-            model.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0).normalize(), Math.PI / 2);
-            bb = new THREE.Box3().setFromObject(model);
-            model.position.set(model.position.x - (bb.min.x + bb.max.x) / 2,
-                model.position.y - (bb.min.y + bb.max.y) / 2, model.position.z - (bb.min.z + bb.max.z) / 2);
-            let material = new THREE.MeshPhongMaterial({color: '#FFFF80'});
-            model.traverse(child => {
-                if (child instanceof THREE.Mesh) {
-                    child.material = material;
-                }
-            });
-            scene.add(model);
-        }, null, null, null);
     }
 
     function initCubeBarriers(maze) {
@@ -125,38 +102,23 @@ function init() {
 
 //创建模型
     function initMesh() {
-        // initBase();
-        // initCubeBarriers(primMaze(10, 10));
-        initTitle();
+        initBase();
+        initCubeBarriers(primMaze(10, 10));
     }
 
     let t0 = new Date()
-    let dy = 0, signdy = 1, signdcz = 1;
 
     function animate() {
         let t1 = new Date(); //本次时间
         let t = t1 - t0; // 时间差
-        light.position.set(light.position.x+0.1 / t * signdcz, light.position.y,light.position.z);
-        if (light.position.z > 2) {
-            signdcz = -1;
-        } else if (light.position.z < -2) {
-            signdcz = 1;
-        }
 
         if (rotate_camera) {
-            dy += 0.05 / t * signdy;
-            if (dy > 0.5) {
-                signdy = -1;
-            } else if (dy < -0.5) {
-                signdy = 1;
-            }
-
             camera.position.set(camera.position.x + 0.01, camera.position.y + 0.01, camera.position.z);
             let r = Math.sqrt(Math.pow(camera.position.x - camera_lookat.x, 2) + Math.pow(camera.position.y - camera_lookat.y, 2));
             let theta = Math.atan2(camera.position.y - camera_lookat.y, camera.position.x - camera_lookat.x);
             theta += 0.1 / t;
             camera.position.x = Math.cos(theta) * r + camera_lookat.x;
-            camera.position.y = Math.sin(theta) * r + camera_lookat.y + dy;
+            camera.position.y = Math.sin(theta) * r + camera_lookat.y;
             // camera.rotateY(0.02);
             camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
             camera.up = new THREE.Vector3(0, 0, 1);

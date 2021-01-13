@@ -112,10 +112,12 @@ function start() {
 
     var btn = window.document.getElementById("startGame");
     btn.onmousedown = function (e) {
-        var b = window.document.getElementById("start");
-        b.style.visibility = "hidden";
-        var c = window.document.getElementById("game");
-        c.style.visibility = "visible";
+        if (e.button === 0) {
+            var b = window.document.getElementById("start");
+            b.style.visibility = "hidden";
+            var c = window.document.getElementById("game");
+            c.style.visibility = "visible";
+        }
     };
 
 }

@@ -68,7 +68,7 @@ function init() {
     }
 
     function initAxes() {
-        var axes = new THREE.AxisHelper(500);
+        var axes = new THREE.AxesHelper(500);
         scene.add(axes);
     }
 
