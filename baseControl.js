@@ -31,7 +31,7 @@ function screenShoot(e) {
 
 //初始化按钮事件
 export function start() {
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 8; i++) {
         var tid;
         var btn = window.document.getElementById("button" + i);
         //console.log(btn);
@@ -51,7 +51,7 @@ export function start() {
         }
     }
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 8; i++) {
         var tid;
         var btn = window.document.getElementById("button" + i);
         //console.log(btn);
@@ -137,28 +137,34 @@ export function start() {
 
 // 按钮事件
 function go(dir) {
-    var e = document.getElementById("fuck");
-    var t = parseInt(e.style.top);
-    var l = parseInt(e.style.left);
-    //console.log(dir);
+    console.log(dir);
     switch (dir) {
         case "button" + 0:
-            t--;
+            left_up_button_clicked();
             break;
         case "button" + 1:
-            l++;
+            left_right_button_clicked();
             break;
         case "button" + 2:
-            t++
+            left_down_button_clicked();
             break;
         case "button" + 3:
-            l--;
+            left_left_button_clicked();
+            break;
+        case "button" + 4:
+            right_up_button_clicked();
+            break;
+        case "button" + 5:
+            right_right_button_clicked();
+            break;
+        case "button" + 6:
+            right_down_button_clicked();
+            break;
+        case "button" + 7:
+            right_left_button_clicked();
             break;
         default:
             break;
     }
-    e.style.top = t + "%";
-    e.style.left = l + "%";
-    //console.log(e.style.top);
 
 }

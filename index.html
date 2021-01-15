@@ -179,7 +179,7 @@
                     <td></td>
                     <td>
                         <div class="full">
-                            <button class="buttonButton backGroundRotate0">
+                            <button class="buttonButton backGroundRotate0" id="button4">
                             </button>
                         </div>
                     </td>
@@ -188,14 +188,14 @@
                 <tr class="buttonTr">
                     <td>
                         <div class="full">
-                            <button class="buttonButton backGroundRotate270">
+                            <button class="buttonButton backGroundRotate270"  id="button7">
                             </button>
                         </div>
                     </td>
                     <td></td>
                     <td>
                         <div class="full">
-                            <button class="buttonButton backGroundRotate90">
+                            <button class="buttonButton backGroundRotate90" id="button5">
                             </button>
                         </div>
                     </td>
@@ -204,7 +204,7 @@
                     <td></td>
                     <td>
                         <div class="full">
-                            <button class="buttonButton backGroundRotate180">
+                            <button class="buttonButton backGroundRotate180"  id="button6">
                             </button>
                         </div>
                     </td>
@@ -257,7 +257,10 @@
 <!--    <script type="module" src="three.js-master/three.js-master/examples/jsm/loaders/OBJLoader2.js"></script>-->
 <script src="stats.min.js"></script>
 <script src="dat.gui.min.js"></script>
-<script type="module" src="index.js"></script>
+<!--<script type="module" src="index.js"></script>-->
+<script>
+    document.write(`<script type=\"module\" src=\"index.js?${Math.random()}\"><\/script>`);
+</script>
 </body>
 
 </html>

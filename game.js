@@ -4,12 +4,13 @@ import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/
 import {MTLLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
 
 var renderer, camera, scene, stats, controls, gui, rotate = true, light;
+let follow_camera;
 let chara, chara_available = false;
 let step = 0.2;
 let rotate_step = 0.1;
 var base_floor;
 const barrier_size = 1;
-const barrier_height = 0.5;
+const barrier_height = 0.1;
 var camera_lookat = new THREE.Vector3(0.0, 0.0, 10.0);
 var rotate_camera = true;
 var init_camera_pos = new THREE.Vector3(0.0, -20.0, 30.0);
@@ -38,9 +39,10 @@ function init(maze_r, maze_c) {
 //初始化相机
     function initCamera() {
         camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 20000);
-        // camera.position.set(0, 800, -800);
         camera.position.set(init_camera_pos.x, init_camera_pos.y, init_camera_pos.z);
         camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
+
+        follow_camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 20000);
     }
 
 //创建灯光
@@ -116,8 +118,12 @@ function init(maze_r, maze_c) {
             loader.setMaterials(materials);
             loader.load('assets/bro.obj', function (model) {
                 let bb = new THREE.Box3().setFromObject(model);
+                // scene.add(new THREE.Box3Helper(bb,0xFFFF00));
+
+                console.log(bb);
                 let scale = barrier_size * 0.6 / Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
-                scale = 0.1;
+                console.log(scale);
+                // scale = 0.1;
                 model.scale.set(scale, scale, scale);
                 // console.log(bb.min+bb.max);
                 console.log(new THREE.Box3().setFromObject(model));
@@ -137,6 +143,7 @@ function init(maze_r, maze_c) {
                 // });
                 scene.add(model);
                 chara = model;
+                chara.cur_rotate = 0;
                 chara_available = true;
                 initPosition();
             }, null, null, null);
@@ -169,9 +176,9 @@ function init(maze_r, maze_c) {
         // }
 
         stats.update(); //更新性能检测框
-        if (chara_available) {
-            console.log(chara.rotation._x);
-        }
+        // if (chara_available) {
+        //     console.log(chara.rotation._x);
+        // }
 
         renderer.render(scene, camera); //渲染界面
         t0 = t1;
@@ -237,9 +244,16 @@ function init(maze_r, maze_c) {
     }
 
     function initPosition() {
-        chara.position.y = -maze_r * barrier_size - 0.5;
-        chara.position.x = -maze_c * barrier_size + 0.5;
-        console.log(chara.position);
+        chara.position.y = -maze_r * barrier_size - 0.5 * barrier_size;
+        chara.position.x = -maze_c * barrier_size + 0.5 * barrier_size;
+        follow_camera.position.x = chara.position.x + 0.3;
+        follow_camera.position.y = chara.position.y + 0.3;
+        let bb = new THREE.Box3().setFromObject(chara);
+        follow_camera.lookAt(chara.position.x, chara.position.y, chara.position.z + 0.5 * (bb.max.z - bb.min.z));
+        follow_camera.up = new THREE.Vector3(0, 0, 1);
+        // console.log(chara.position);
+        // let bb = new THREE.Box3().setFromObject(chara);
+        // scene.add(new THREE.Box3Helper(bb,0xFFFF00));
     }
 
 //初始化函数，页面加载完成是调用
@@ -261,13 +275,23 @@ function start_game() {
 }
 
 function left_up_button_clicked() {
-    chara.position.x += step * Math.cos(chara.rotation._x);
-    chara.position.y += step * Math.sin(chara.rotation._x);
+    chara.position.x -= step * Math.sin(chara.cur_rotate);
+    chara.position.y += step * Math.cos(chara.cur_rotate);
+    follow_camera.position.x = chara.position.x + 0.3;
+    follow_camera.position.y = chara.position.y + 0.3;
+    let bb = new THREE.Box3().setFromObject(chara);
+    follow_camera.lookAt(chara.position.x, chara.position.y, chara.position.z + 0.5 * (bb.max.z - bb.min.z));
+    follow_camera.up = new THREE.Vector3(0, 0, 1);
 }
 
 function left_down_button_clicked() {
-    chara.position.x += step * Math.cos(chara.rotation._x);
-    chara.position.y += step * Math.sin(chara.rotation._x);
+    chara.position.x += step * Math.sin(chara.cur_rotate);
+    chara.position.y -= step * Math.cos(chara.cur_rotate);
+    follow_camera.position.x = chara.position.x + 0.3;
+    follow_camera.position.y = chara.position.y + 0.3;
+    let bb = new THREE.Box3().setFromObject(chara);
+    follow_camera.lookAt(chara.position.x, chara.position.y, chara.position.z + 0.5 * (bb.max.z - bb.min.z));
+    follow_camera.up = new THREE.Vector3(0, 0, 1);
 }
 
 function left_left_button_clicked() {
@@ -287,12 +311,15 @@ function right_down_button_clicked() {
 }
 
 function right_left_button_clicked() {
-    chara.rotateX(rotate_step);
+    chara.rotateOnAxis(new THREE.Vector3(0, 1, 0).normalize(), rotate_step);
+    chara.cur_rotate += rotate_step;
 }
 
 function right_right_button_clicked() {
-    chara.rotateX(-rotate_step);
+    chara.rotateOnAxis(new THREE.Vector3(0, 1, 0).normalize(), -rotate_step);
+    chara.cur_rotate -= rotate_step;
 }
+
 
 export {
     start_game,

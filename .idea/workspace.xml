@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/baseControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +60,7 @@
       <updated>1610372874180</updated>
       <workItem from="1610372875492" duration="1235000" />
       <workItem from="1610376132350" duration="22487000" />
-      <workItem from="1610545423737" duration="14117000" />
+      <workItem from="1610545423737" duration="19005000" />
     </task>
     <task id="LOCAL-00001" summary="模块化">
       <created>1610525637705</created>
@@ -98,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610551546451</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="game.js事件控制">
+      <created>1610699627134</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610699627134</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +117,7 @@
     <MESSAGE value="添加标题，人物预览" />
     <MESSAGE value="微调" />
     <MESSAGE value="把人物改成阴间模型" />
-    <option name="LAST_COMMIT_MESSAGE" value="把人物改成阴间模型" />
+    <MESSAGE value="game.js事件控制" />
+    <option name="LAST_COMMIT_MESSAGE" value="game.js事件控制" />
   </component>
 </project>
