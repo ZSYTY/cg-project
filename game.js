@@ -1,7 +1,8 @@
 import * as THREE from './three.js-master/three.js-master/build/three.module.js';
 import primMaze from './maze.js'
-import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
+// import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
 import {MTLLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
+import { MyOBJLoader } from './myLoader.js'
 
 var renderer, overview_camera, scene, stats, controls, gui, rotate = true, light;
 let follow_camera;
@@ -21,8 +22,9 @@ var init_camera_pos = new THREE.Vector3(0.0, -20.0, 30.0);
 let barriers = [];
 let barriers_bb = [];
 
-function init(maze_r, maze_c) {
+function init(config) {
 
+    const { maze_r, maze_c, lightColor, texture_name } = config
 
     var parentDOM = document.getElementById('game');
     const width = parentDOM.offsetWidth, height = parentDOM.offsetHeight;
@@ -62,7 +64,7 @@ function init(maze_r, maze_c) {
 
 //创建灯光
     function initLight() {
-        scene.add(new THREE.AmbientLight(0x111111));
+        scene.add(new THREE.AmbientLight(0x111111 & lightColor));
 
         light = new THREE.DirectionalLight(0xaaaaaa);
         light.position.set(0, 200, 100);
@@ -79,7 +81,7 @@ function init(maze_r, maze_c) {
 
         scene.add(light);
 
-        var lightg = new THREE.DirectionalLight(0xffffff); //添加了一个白色的平行光
+        var lightg = new THREE.DirectionalLight(lightColor); //添加了一个平行光
         lightg.position.set(20, 50, 50); //设置光的方向
         scene.add(lightg); //添加到场景
 
@@ -124,7 +126,7 @@ function init(maze_r, maze_c) {
     }
 
     function initCubeBarriers(maze) {
-        let texture = new THREE.TextureLoader().load("assets/wooden_wall.jpg"); // 地板纹理
+        let texture = new THREE.TextureLoader().load("assets/" + texture_name); // 地板纹理
         let material = new THREE.MeshLambertMaterial({map: texture});
         texture.wrapS = THREE.MirroredRepeatWrapping; //设置水平方向无限循环
         texture.wrapT = THREE.MirroredRepeatWrapping; //设置垂直方向无限循环
@@ -157,7 +159,7 @@ function init(maze_r, maze_c) {
         let mloader = new MTLLoader();
         mloader.load('assets/bro.mtl', function (materials) {
             materials.preload();
-            let loader = new OBJLoader();
+            let loader = new MyOBJLoader();
             loader.setMaterials(materials);
             loader.load('assets/bro.obj', function (model) {
                 let bb = new THREE.Box3().setFromObject(model);
@@ -340,8 +342,8 @@ function update_first_camera() {
     first_camera.rotateOnAxis(new THREE.Vector3(1, 0, 0).normalize(), first_camera.cur_rise);
 }
 
-function start_game() {
-    init(3, 3);
+function start_game(config) {
+    init(config);
 }
 
 function left_up_button_clicked() {
