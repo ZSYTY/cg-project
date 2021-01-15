@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/floor.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/wooden_wall.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dat.gui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/maze.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stats.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/three.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/baseControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+    <list default="true" id="22b29c5f-ca2c-40a4-8590-ab9ecf2f5440" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/floor.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/wooden_wall.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/baseControl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-project/mainView.css" beforeDir="false" afterPath="$PROJECT_DIR$/cg-project/mainView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-project/pic/Arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/cg-project/pic/Arrow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dat.gui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainView.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maze.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/Arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/three.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +28,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/cg-project" />
   </component>
-  <component name="ProjectId" id="1mvT4VsFbZVtBLvkxzyqHmRz8BD" />
+  <component name="ProjectId" id="1n1OEaunHo3o4JJQao2KSUPp3mE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -32,22 +41,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Documents\Computer Graphics\finalproject\cg-project" />
-    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="" />
-      <created>1610372874180</created>
+      <changelist id="22b29c5f-ca2c-40a4-8590-ab9ecf2f5440" name="Default Changelist" comment="" />
+      <created>1610554023434</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1610372874180</updated>
-      <workItem from="1610372875492" duration="1235000" />
+      <updated>1610554023434</updated>
+      <workItem from="1610554026408" duration="154000" />
+      <workItem from="1610554212001" duration="489000" />
+      <workItem from="1610698610170" duration="750000" />
     </task>
     <servers />
   </component>
