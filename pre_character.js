@@ -1,6 +1,6 @@
 import * as THREE from './three.js-master/three.js-master/build/three.module.js';
-import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
-import {MTLLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
+import { OBJLoader } from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
+import { MTLLoader } from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
 
 function init() {
     var renderer, camera, scene, stats, controls, gui, rotate = true, light;
@@ -18,20 +18,20 @@ function init() {
     //  console.log(parentDOM);
     const width = parentDOM.offsetWidth, height = parentDOM.offsetHeight
 
-//初始化渲染器
+    //初始化渲染器
     function initRenderer() {
-        renderer = new THREE.WebGLRenderer({antialias: true, alpha: false}); //实例化渲染器
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false }); //实例化渲染器
         renderer.setSize(width, height); //设置宽和高
         parentDOM.appendChild(renderer.domElement); //添加到dom
     }
 
-//初始化场景
+    //初始化场景
     function initScene() {
         scene = new THREE.Scene(); //实例化场景
         // scene.fog = new THREE.Fog(0xa0a0a0, 1000, 11000);
     }
 
-//初始化相机
+    //初始化相机
     function initCamera() {
         camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 20000);
         // camera.position.set(0, 800, -800);
@@ -39,7 +39,7 @@ function init() {
         camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
     }
 
-//创建灯光
+    //创建灯光
     function initLight() {
         scene.add(new THREE.AmbientLight(0x444444));
 
@@ -75,7 +75,7 @@ function init() {
 
     function initBase() {
         let texture_floor = new THREE.TextureLoader().load("assets/floor.jpg"); // 地板纹理
-        let material_floor = new THREE.MeshLambertMaterial({map: texture_floor});
+        let material_floor = new THREE.MeshLambertMaterial({ map: texture_floor });
         texture_floor.wrapS = THREE.MirroredRepeatWrapping; //设置水平方向无限循环
         texture_floor.wrapT = THREE.MirroredRepeatWrapping; //设置垂直方向无限循环
         texture_floor.repeat.set(1000, 1000);
@@ -92,11 +92,11 @@ function init() {
 
     function initCharacter() {
         let mloader = new MTLLoader();
-        mloader.load('assets/Memoria miku/Memoria miku.mtl', function (materials) {
+        mloader.load('assets/bro.mtl', function (materials) {
             materials.preload();
             let loader = new OBJLoader();
             loader.setMaterials(materials);
-            loader.load('assets/Memoria miku/Memoria miku.obj', function (model) {
+            loader.load('assets/bro.obj', function (model) {
                 let bb = new THREE.Box3().setFromObject(model);
                 // console.log(bb.min+bb.max);
                 console.log(new THREE.Box3().setFromObject(model));
@@ -121,7 +121,7 @@ function init() {
 
     function initCubeBarriers(maze) {
         let texture = new THREE.TextureLoader().load("assets/wooden_wall.jpg"); // 地板纹理
-        let material = new THREE.MeshLambertMaterial({map: texture});
+        let material = new THREE.MeshLambertMaterial({ map: texture });
         texture.wrapS = THREE.MirroredRepeatWrapping; //设置水平方向无限循环
         texture.wrapT = THREE.MirroredRepeatWrapping; //设置垂直方向无限循环
         texture.repeat.set(2, 2);
@@ -138,7 +138,7 @@ function init() {
         }
     }
 
-//创建模型
+    //创建模型
     function initMesh() {
         // initBase();
         // initCubeBarriers(primMaze(10, 10));
@@ -184,13 +184,13 @@ function init() {
         requestAnimationFrame(animate); //循环调用函数
     }
 
-//性能检测框
+    //性能检测框
     function initStats() {
         stats = new Stats();
         document.body.appendChild(stats.dom);
     }
 
-//创建调试框
+    //创建调试框
     function initGui() {
         controls = {
             rotate_x: 0,
@@ -234,7 +234,7 @@ function init() {
 
     }
 
-//初始化函数，页面加载完成是调用
+    //初始化函数，页面加载完成是调用
     initRenderer();
     initScene();
     console.log(scene);
