@@ -2,41 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/Memoria miku.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/Memoria miku.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/Thumbs.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/[Originals]/miku_sw.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/b2.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/bunny_skin.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/gloves.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/gold.sph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/hair4.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/lace.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/neck.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/ribbon1.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/ribbon2.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/shoes1.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/socks.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/spa.spa" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/sph/Thumbs.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/sph/body00_s.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/sph/body01_s.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/sph/skin_s.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/t005.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/t006.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/t009.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/tga/[Originals]/miku_sw.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/tga/body02_MikuAp.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/tga/face_MikuAp_b.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/tga/miku_sw.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/toon1.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/toon_skin.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/top.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Memoria miku/top1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/baseControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pre_character.js" beforeDir="false" afterPath="$PROJECT_DIR$/pre_character.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +61,7 @@
       <updated>1610372874180</updated>
       <workItem from="1610372875492" duration="1235000" />
       <workItem from="1610376132350" duration="22487000" />
-      <workItem from="1610545423737" duration="6102000" />
+      <workItem from="1610545423737" duration="14117000" />
     </task>
     <task id="LOCAL-00001" summary="模块化">
       <created>1610525637705</created>
@@ -121,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610548516594</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="把人物改成阴间模型">
+      <created>1610551546451</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610551546451</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +110,7 @@
     <MESSAGE value="模块化2" />
     <MESSAGE value="添加标题，人物预览" />
     <MESSAGE value="微调" />
-    <option name="LAST_COMMIT_MESSAGE" value="微调" />
+    <MESSAGE value="把人物改成阴间模型" />
+    <option name="LAST_COMMIT_MESSAGE" value="把人物改成阴间模型" />
   </component>
 </project>

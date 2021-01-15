@@ -1,4 +1,16 @@
 // 菜单里设置的全局变量
+import {
+    start_game,
+    left_up_button_clicked,
+    left_down_button_clicked,
+    left_left_button_clicked,
+    left_right_button_clicked,
+    right_up_button_clicked,
+    right_down_button_clicked,
+    right_left_button_clicked,
+    right_right_button_clicked
+} from "./game.js";
+
 var humanSex = "sex-1";
 var lightColor = "color-1";
 var gameDiff = "diff-1";
@@ -18,7 +30,7 @@ function screenShoot(e) {
 }
 
 //初始化按钮事件
-function start() {
+export function start() {
     for (var i = 0; i < 4; i++) {
         var tid;
         var btn = window.document.getElementById("button" + i);
@@ -117,6 +129,7 @@ function start() {
             b.parentNode.removeChild(b);
             var c = window.document.getElementById("game");
             c.style.visibility = "visible";
+            start_game();
         }
     };
 

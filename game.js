@@ -3,16 +3,19 @@ import primMaze from './maze.js'
 import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
 import {MTLLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
 
-function init() {
-    var renderer, camera, scene, stats, controls, gui, rotate = true, light;
-    var chara;
+var renderer, camera, scene, stats, controls, gui, rotate = true, light;
+let chara, chara_available = false;
+let step = 0.2;
+let rotate_step = 0.1;
+var base_floor;
+const barrier_size = 1;
+const barrier_height = 0.5;
+var camera_lookat = new THREE.Vector3(0.0, 0.0, 10.0);
+var rotate_camera = true;
+var init_camera_pos = new THREE.Vector3(0.0, -20.0, 30.0);
 
-    var base_floor;
-    const barrier_size = 1;
-    const barrier_height = 0.5;
-    var camera_lookat = new THREE.Vector3(0.0, 0.0, 10.0);
-    var rotate_camera = true;
-    var init_camera_pos = new THREE.Vector3(0.0, -20.0, 30.0);
+function init(maze_r, maze_c) {
+
 
     var parentDOM = document.getElementById('game');
     const width = parentDOM.offsetWidth, height = parentDOM.offsetHeight;
@@ -92,10 +95,11 @@ function init() {
         texture.wrapT = THREE.MirroredRepeatWrapping; //设置垂直方向无限循环
         texture.repeat.set(2, 2);
         for (let i = 0; i < maze.length; ++i) {
-            for (let j = 0; j < maze.length; ++j) {
+            for (let j = 0; j < maze[i].length; ++j) {
                 if (maze[i][j]) {
                     let barrier_cube = new THREE.Mesh(new THREE.BoxBufferGeometry(barrier_size, barrier_size, barrier_height), material);
-                    barrier_cube.position.x = j * barrier_size - maze.length * barrier_size / 2;
+                    // console.log([maze[i].length,maze.length]);
+                    barrier_cube.position.x = j * barrier_size - maze[i].length * barrier_size / 2;
                     barrier_cube.position.y = i * barrier_size - maze.length * barrier_size / 2;
                     barrier_cube.position.z = 0;
                     scene.add(barrier_cube);
@@ -106,11 +110,11 @@ function init() {
 
     function initCharacter() {
         let mloader = new MTLLoader();
-        mloader.load('assets/Memoria miku/Memoria miku.mtl', function (materials) {
+        mloader.load('assets/bro.mtl', function (materials) {
             materials.preload();
             let loader = new OBJLoader();
             loader.setMaterials(materials);
-            loader.load('assets/Memoria miku/Memoria miku.obj', function (model) {
+            loader.load('assets/bro.obj', function (model) {
                 let bb = new THREE.Box3().setFromObject(model);
                 let scale = barrier_size * 0.6 / Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
                 scale = 0.1;
@@ -133,6 +137,8 @@ function init() {
                 // });
                 scene.add(model);
                 chara = model;
+                chara_available = true;
+                initPosition();
             }, null, null, null);
         });
     }
@@ -140,7 +146,7 @@ function init() {
 //创建模型
     function initMesh() {
         initBase();
-        initCubeBarriers(primMaze(10, 10));
+        initCubeBarriers(primMaze(maze_r, maze_c));
         initCharacter();
     }
 
@@ -163,6 +169,9 @@ function init() {
         // }
 
         stats.update(); //更新性能检测框
+        if (chara_available) {
+            console.log(chara.rotation._x);
+        }
 
         renderer.render(scene, camera); //渲染界面
         t0 = t1;
@@ -228,7 +237,9 @@ function init() {
     }
 
     function initPosition() {
-
+        chara.position.y = -maze_r * barrier_size - 0.5;
+        chara.position.x = -maze_c * barrier_size + 0.5;
+        console.log(chara.position);
     }
 
 //初始化函数，页面加载完成是调用
@@ -245,7 +256,53 @@ function init() {
     animate();
 }
 
-export default function () {
-    init();
+function start_game() {
+    init(10, 20);
 }
+
+function left_up_button_clicked() {
+    chara.position.x += step * Math.cos(chara.rotation._x);
+    chara.position.y += step * Math.sin(chara.rotation._x);
+}
+
+function left_down_button_clicked() {
+    chara.position.x += step * Math.cos(chara.rotation._x);
+    chara.position.y += step * Math.sin(chara.rotation._x);
+}
+
+function left_left_button_clicked() {
+
+}
+
+function left_right_button_clicked() {
+
+}
+
+function right_up_button_clicked() {
+
+}
+
+function right_down_button_clicked() {
+
+}
+
+function right_left_button_clicked() {
+    chara.rotateX(rotate_step);
+}
+
+function right_right_button_clicked() {
+    chara.rotateX(-rotate_step);
+}
+
+export {
+    start_game,
+    left_up_button_clicked,
+    left_down_button_clicked,
+    left_left_button_clicked,
+    left_right_button_clicked,
+    right_up_button_clicked,
+    right_down_button_clicked,
+    right_left_button_clicked,
+    right_right_button_clicked
+};
 
