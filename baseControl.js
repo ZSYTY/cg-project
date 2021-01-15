@@ -8,7 +8,7 @@ import {
     right_up_button_clicked,
     right_down_button_clicked,
     right_left_button_clicked,
-    right_right_button_clicked
+    right_right_button_clicked, switch_to_third, switch_to_overview, switch_to_first
 } from "./game.js";
 
 var humanSex = "sex-1";
@@ -25,22 +25,20 @@ function consoleView() {
     e.innerText = "w" + w + "h" + h;
 }
 
-function screenShoot(e) {
+export function screenShoot() {
 
 }
 
-function firstView(e){
-
-
+firstView = function(){
+    switch_to_first();
 }
 
-function thirdView(e){
-
-
+thirdView = function(){
+    switch_to_third();
 }
 
-function godView(e){
-
+godView = function(){
+    switch_to_overview();
 }
 
 //初始化按钮事件
@@ -182,3 +180,4 @@ function go(dir) {
     }
 
 }
+

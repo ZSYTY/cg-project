@@ -3,17 +3,23 @@ import primMaze from './maze.js'
 import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
 import {MTLLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
 
-var renderer, camera, scene, stats, controls, gui, rotate = true, light;
+var renderer, overview_camera, scene, stats, controls, gui, rotate = true, light;
 let follow_camera;
+let first_camera;
+let camera;
+let dest;
+let dest_bb;
 let chara, chara_available = false;
 let step = 0.2;
 let rotate_step = 0.1;
 var base_floor;
 const barrier_size = 1;
-const barrier_height = 0.1;
+const barrier_height = 5;
 var camera_lookat = new THREE.Vector3(0.0, 0.0, 10.0);
 var rotate_camera = true;
 var init_camera_pos = new THREE.Vector3(0.0, -20.0, 30.0);
+let barriers = [];
+let barriers_bb = [];
 
 function init(maze_r, maze_c) {
 
@@ -38,11 +44,20 @@ function init(maze_r, maze_c) {
 
 //初始化相机
     function initCamera() {
-        camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 20000);
-        camera.position.set(init_camera_pos.x, init_camera_pos.y, init_camera_pos.z);
-        camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
+        overview_camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 20000);
+        overview_camera.position.set(init_camera_pos.x, init_camera_pos.y, init_camera_pos.z);
+        overview_camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
 
         follow_camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 20000);
+        follow_camera.up = new THREE.Vector3(0, 0, 1);
+        follow_camera.dist = 0.5;
+
+        first_camera = new THREE.PerspectiveCamera(90, width / height, 0.1, 20000);
+        first_camera.up = new THREE.Vector3(0, 0, 1);
+        first_camera.dist = 0.1;
+        first_camera.cur_rise = 0;
+
+        camera = overview_camera;
     }
 
 //创建灯光
@@ -84,10 +99,28 @@ function init(maze_r, maze_c) {
         texture_floor.wrapS = THREE.MirroredRepeatWrapping; //设置水平方向无限循环
         texture_floor.wrapT = THREE.MirroredRepeatWrapping; //设置垂直方向无限循环
         texture_floor.repeat.set(1000, 1000);
-        base_floor = new THREE.Mesh(new THREE.BoxBufferGeometry(10000, 10000, 10), material_floor);
-        base_floor.position.z = -5.5;
+        base_floor = new THREE.Mesh(new THREE.PlaneBufferGeometry(10000, 10000), material_floor);
+        base_floor.position.z = -0.01;
         base_floor.receiveShadow = true;
         scene.add(base_floor);
+    }
+
+    function getRandomBarrier() {
+        let k = Math.floor(Math.random() * 3);
+        switch (k) {
+            case 0:
+                return new THREE.BoxBufferGeometry(barrier_size, barrier_size, barrier_height);
+            case 1:
+                let g = new THREE.ConeBufferGeometry(barrier_size, barrier_height, 360);
+                g.rotateX(Math.PI / 2);
+                return g;
+            case 2:
+                return new THREE.SphereBufferGeometry(barrier_size / 2, 360, 360);
+
+            default:
+                console.log(k);
+        }
+        // console.log(getRandomBarrier);
     }
 
     function initCubeBarriers(maze) {
@@ -99,15 +132,25 @@ function init(maze_r, maze_c) {
         for (let i = 0; i < maze.length; ++i) {
             for (let j = 0; j < maze[i].length; ++j) {
                 if (maze[i][j]) {
-                    let barrier_cube = new THREE.Mesh(new THREE.BoxBufferGeometry(barrier_size, barrier_size, barrier_height), material);
+                    let barrier_cube = new THREE.Mesh(getRandomBarrier(), material);
                     // console.log([maze[i].length,maze.length]);
                     barrier_cube.position.x = j * barrier_size - maze[i].length * barrier_size / 2;
                     barrier_cube.position.y = i * barrier_size - maze.length * barrier_size / 2;
                     barrier_cube.position.z = 0;
                     scene.add(barrier_cube);
+                    barriers.push(barrier_cube);
+                    barriers_bb.push(new THREE.Box3().setFromObject(barrier_cube));
                 }
             }
         }
+        dest = new THREE.Mesh(new THREE.BoxBufferGeometry(barrier_size, barrier_size, 1000), new THREE.MeshNormalMaterial({
+            transparent: true,
+            opacity: 0.5
+        }));
+        dest.position.x = (maze[0].length - 2) * barrier_size - maze[0].length * barrier_size / 2;
+        dest.position.y = (maze.length - 1) * barrier_size - maze.length * barrier_size / 2;
+        scene.add(dest);
+        dest_bb = new THREE.Box3().setFromObject(dest);
     }
 
     function initCharacter() {
@@ -121,7 +164,7 @@ function init(maze_r, maze_c) {
                 // scene.add(new THREE.Box3Helper(bb,0xFFFF00));
 
                 console.log(bb);
-                let scale = barrier_size * 0.6 / Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
+                let scale = barrier_size * 0.4 / Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
                 console.log(scale);
                 // scale = 0.1;
                 model.scale.set(scale, scale, scale);
@@ -164,15 +207,15 @@ function init(maze_r, maze_c) {
         let t = t1 - t0; // 时间差
 
         // if (rotate_camera) {
-        //     camera.position.set(camera.position.x + 0.01, camera.position.y + 0.01, camera.position.z);
-        //     let r = Math.sqrt(Math.pow(camera.position.x - camera_lookat.x, 2) + Math.pow(camera.position.y - camera_lookat.y, 2));
-        //     let theta = Math.atan2(camera.position.y - camera_lookat.y, camera.position.x - camera_lookat.x);
+        //     overview_camera.position.set(overview_camera.position.x + 0.01, overview_camera.position.y + 0.01, overview_camera.position.z);
+        //     let r = Math.sqrt(Math.pow(overview_camera.position.x - camera_lookat.x, 2) + Math.pow(overview_camera.position.y - camera_lookat.y, 2));
+        //     let theta = Math.atan2(overview_camera.position.y - camera_lookat.y, overview_camera.position.x - camera_lookat.x);
         //     theta += 0.1 / t;
-        //     camera.position.x = Math.cos(theta) * r + camera_lookat.x;
-        //     camera.position.y = Math.sin(theta) * r + camera_lookat.y;
-        //     // camera.rotateY(0.02);
-        //     camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
-        //     camera.up = new THREE.Vector3(0, 0, 1);
+        //     overview_camera.position.x = Math.cos(theta) * r + camera_lookat.x;
+        //     overview_camera.position.y = Math.sin(theta) * r + camera_lookat.y;
+        //     // overview_camera.rotateY(0.02);
+        //     overview_camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
+        //     overview_camera.up = new THREE.Vector3(0, 0, 1);
         // }
 
         stats.update(); //更新性能检测框
@@ -211,25 +254,25 @@ function init(maze_r, maze_c) {
 
         gui = new dat.GUI();
         // gui.add(controls, "camera_position_x").onChange(function (e) {
-        //     camera.position.x = e;
+        //     overview_camera.position.x = e;
         // });
         // gui.add(controls, "camera_position_y").onChange(function (e) {
-        //     camera.position.y = e;
+        //     overview_camera.position.y = e;
         // });
         // gui.add(controls, "camera_position_z").onChange(function (e) {
-        //     camera.position.z = e;
+        //     overview_camera.position.z = e;
         // });
         // gui.add(controls, "camera_lookat_x").onChange(function (e) {
         //     camera_lookat.x = e;
-        //     camera.lookAt(camera_lookat);
+        //     overview_camera.lookAt(camera_lookat);
         // });
         // gui.add(controls, "camera_lookat_y").onChange(function (e) {
         //     camera_lookat.y = e;
-        //     camera.lookAt(camera_lookat);
+        //     overview_camera.lookAt(camera_lookat);
         // });
         // gui.add(controls, "camera_lookat_z").onChange(function (e) {
         //     camera_lookat.z = e;
-        //     camera.lookAt(camera_lookat);
+        //     overview_camera.lookAt(camera_lookat);
         // });
         // gui.add(controls, "rotate_camera").onChange(function (e) {
         //     rotate_camera = e;
@@ -243,14 +286,16 @@ function init(maze_r, maze_c) {
 
     }
 
+
     function initPosition() {
+        let bb = new THREE.Box3().setFromObject(chara);
         chara.position.y = -maze_r * barrier_size - 0.5 * barrier_size;
         chara.position.x = -maze_c * barrier_size + 0.5 * barrier_size;
-        follow_camera.position.x = chara.position.x + 0.3;
-        follow_camera.position.y = chara.position.y + 0.3;
-        let bb = new THREE.Box3().setFromObject(chara);
-        follow_camera.lookAt(chara.position.x, chara.position.y, chara.position.z + 0.5 * (bb.max.z - bb.min.z));
-        follow_camera.up = new THREE.Vector3(0, 0, 1);
+        chara.position.z += -bb.min.z;
+        update_follow_camera();
+        update_first_camera();
+        update_follow_camera();
+        update_first_camera();
         // console.log(chara.position);
         // let bb = new THREE.Box3().setFromObject(chara);
         // scene.add(new THREE.Box3Helper(bb,0xFFFF00));
@@ -270,28 +315,75 @@ function init(maze_r, maze_c) {
     animate();
 }
 
+function check_win() {
+    if (new THREE.Box3().setFromObject(chara).intersectsBox(dest_bb)) {
+        alert("你赢了！");
+    }
+}
+
+function update_follow_camera() {
+    let bb = new THREE.Box3().setFromObject(chara);
+    follow_camera.position.x = chara.position.x + follow_camera.dist * Math.sin(chara.cur_rotate);
+    follow_camera.position.y = chara.position.y - follow_camera.dist * Math.cos(chara.cur_rotate);
+    follow_camera.position.z = chara.position.z + 1 * (bb.max.z);
+    follow_camera.lookAt(chara.position.x, chara.position.y, chara.position.z + 0.5 * (bb.max.z));
+    follow_camera.up = new THREE.Vector3(0, 0, 1);
+}
+
+function update_first_camera() {
+    let bb = new THREE.Box3().setFromObject(chara);
+    first_camera.position.x = chara.position.x - first_camera.dist * Math.sin(chara.cur_rotate);
+    first_camera.position.y = chara.position.y + first_camera.dist * Math.cos(chara.cur_rotate);
+    first_camera.position.z = chara.position.z + 1 * (bb.max.z);
+    first_camera.lookAt(chara.position.x - Math.sin(chara.cur_rotate), chara.position.y + Math.cos(chara.cur_rotate), first_camera.position.z);
+    first_camera.up = new THREE.Vector3(0, 0, 1);
+    first_camera.rotateOnAxis(new THREE.Vector3(1, 0, 0).normalize(), first_camera.cur_rise);
+}
+
 function start_game() {
-    init(10, 20);
+    init(3, 3);
 }
 
 function left_up_button_clicked() {
-    chara.position.x -= step * Math.sin(chara.cur_rotate);
-    chara.position.y += step * Math.cos(chara.cur_rotate);
-    follow_camera.position.x = chara.position.x + 0.3;
-    follow_camera.position.y = chara.position.y + 0.3;
+    let dx = -step * Math.sin(chara.cur_rotate);
+    let dy = step * Math.cos(chara.cur_rotate);
     let bb = new THREE.Box3().setFromObject(chara);
-    follow_camera.lookAt(chara.position.x, chara.position.y, chara.position.z + 0.5 * (bb.max.z - bb.min.z));
-    follow_camera.up = new THREE.Vector3(0, 0, 1);
+    bb.max.x -= 0.03;
+    bb.max.y -= 0.03;
+    bb.min.x += 0.03;
+    bb.min.y += 0.03;
+    bb.translate(new THREE.Vector3(dx, dy, 0));
+    for (let i = 0; i < barriers_bb.length; ++i) {
+        if (bb.intersectsBox(barriers_bb[i])) {
+            return;
+        }
+    }
+    chara.position.x += dx;
+    chara.position.y += dy;
+    update_follow_camera();
+    update_first_camera();
+    check_win();
 }
 
 function left_down_button_clicked() {
-    chara.position.x += step * Math.sin(chara.cur_rotate);
-    chara.position.y -= step * Math.cos(chara.cur_rotate);
-    follow_camera.position.x = chara.position.x + 0.3;
-    follow_camera.position.y = chara.position.y + 0.3;
+    let dx = step * Math.sin(chara.cur_rotate);
+    let dy = -step * Math.cos(chara.cur_rotate);
     let bb = new THREE.Box3().setFromObject(chara);
-    follow_camera.lookAt(chara.position.x, chara.position.y, chara.position.z + 0.5 * (bb.max.z - bb.min.z));
-    follow_camera.up = new THREE.Vector3(0, 0, 1);
+    bb.max.x -= 0.08;
+    bb.max.y -= 0.08;
+    bb.min.x += 0.08;
+    bb.min.y += 0.08;
+    bb.translate(new THREE.Vector3(dx, dy, 0));
+    for (let i = 0; i < barriers_bb.length; ++i) {
+        if (bb.intersectsBox(barriers_bb[i])) {
+            return;
+        }
+    }
+    chara.position.x += dx;
+    chara.position.y += dy;
+    update_follow_camera();
+    update_first_camera();
+    check_win();
 }
 
 function left_left_button_clicked() {
@@ -303,23 +395,56 @@ function left_right_button_clicked() {
 }
 
 function right_up_button_clicked() {
-
+    if (camera === follow_camera) {
+        follow_camera.dist += 0.025;
+    } else if (camera === first_camera) {
+        first_camera.cur_rise += 0.025;
+    }
+    update_follow_camera();
+    update_first_camera();
+    check_win();
 }
 
 function right_down_button_clicked() {
+    if (camera === follow_camera) {
+        follow_camera.dist -= 0.025;
+    } else if (camera === first_camera) {
+        first_camera.cur_rise -= 0.025
+    }
+    update_follow_camera();
+    update_first_camera();
+    check_win();
 
 }
 
 function right_left_button_clicked() {
     chara.rotateOnAxis(new THREE.Vector3(0, 1, 0).normalize(), rotate_step);
     chara.cur_rotate += rotate_step;
+    update_follow_camera();
+    update_first_camera();
+    check_win();
+
 }
 
 function right_right_button_clicked() {
     chara.rotateOnAxis(new THREE.Vector3(0, 1, 0).normalize(), -rotate_step);
     chara.cur_rotate -= rotate_step;
+    update_follow_camera();
+    update_first_camera();
+    check_win();
 }
 
+function switch_to_overview() {
+    camera = overview_camera;
+}
+
+function switch_to_third() {
+    camera = follow_camera;
+}
+
+function switch_to_first() {
+    camera = first_camera;
+}
 
 export {
     start_game,
@@ -330,6 +455,9 @@ export {
     right_up_button_clicked,
     right_down_button_clicked,
     right_left_button_clicked,
-    right_right_button_clicked
+    right_right_button_clicked,
+    switch_to_overview,
+    switch_to_third,
+    switch_to_first
 };
 
