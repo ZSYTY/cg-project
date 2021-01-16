@@ -2,7 +2,7 @@ import * as THREE from './three.js-master/three.js-master/build/three.module.js'
 import primMaze from './maze.js'
 // import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
 import {MTLLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
-import { MyOBJLoader } from './myLoader.js'
+import {MyOBJLoader} from './myLoader.js'
 
 var renderer, overview_camera, scene, stats, controls, gui, rotate = true, light;
 let follow_camera;
@@ -24,7 +24,7 @@ let barriers_bb = [];
 
 function init(config) {
 
-    const { maze_r, maze_c, lightColor, texture_name } = config
+    const {maze_r, maze_c, lightColor, texture_name} = config
 
     var parentDOM = document.getElementById('game');
     const width = parentDOM.offsetWidth, height = parentDOM.offsetHeight;
@@ -100,7 +100,7 @@ function init(config) {
         let material_floor = new THREE.MeshLambertMaterial({map: texture_floor});
         texture_floor.wrapS = THREE.MirroredRepeatWrapping; //设置水平方向无限循环
         texture_floor.wrapT = THREE.MirroredRepeatWrapping; //设置垂直方向无限循环
-        texture_floor.repeat.set(1000, 1000);
+        texture_floor.repeat.set(2000, 2000);
         base_floor = new THREE.Mesh(new THREE.PlaneBufferGeometry(10000, 10000), material_floor);
         base_floor.position.z = -0.01;
         base_floor.receiveShadow = true;
@@ -108,16 +108,48 @@ function init(config) {
     }
 
     function getRandomBarrier() {
-        let k = Math.floor(Math.random() * 3);
+        let k = Math.floor(Math.random() * 6);
+        //k=1;
         switch (k) {
-            case 0:
-                return new THREE.BoxBufferGeometry(barrier_size, barrier_size, barrier_height);
-            case 1:
-                let g = new THREE.ConeBufferGeometry(barrier_size, barrier_height, 360);
+            case 0: {
+                let g = new THREE.BoxBufferGeometry(barrier_size, barrier_size, barrier_height);
+                //g.translate(0, 0, barrier_height / 2);
+                // g.rotateX(Math.PI / 2);
+                return g;
+            }
+            case 1: {
+                let g = new THREE.ConeGeometry(barrier_size / 2, barrier_height, 360);
+                //g.translate(0, 0, barrier_height / 2);
                 g.rotateX(Math.PI / 2);
                 return g;
-            case 2:
-                return new THREE.SphereBufferGeometry(barrier_size / 2, 360, 360);
+            }
+            case 2: {
+                let g = new THREE.SphereBufferGeometry(barrier_size / 2, 360, 360);
+                //g.translate(0, 0, barrier_height / 2);
+                return g;
+            }
+            case 3: {
+                // 圆柱
+                let g = new THREE.CylinderBufferGeometry(barrier_size / 2, barrier_size / 2, barrier_height, 360);
+                //g.translate(0, 0, barrier_height / 2);
+                g.rotateX(Math.PI / 2);
+                return g;
+            }
+            case 4: {
+                // 多面棱柱
+                let g = new THREE.CylinderBufferGeometry(barrier_size / 2, barrier_size / 2, barrier_height, 6);
+                //g.translate(0, 0, barrier_height / 2);
+                g.rotateX(Math.PI / 2);
+                return g;
+            }
+            case 5: {
+                // 多面棱台
+                let g = new THREE.CylinderBufferGeometry(barrier_size / 2, barrier_size / 4, barrier_height, 6);
+                //g.translate(0, 0, barrier_height / 2);
+                g.rotateX(Math.PI / 2);
+                return g;
+            }
+
 
             default:
                 console.log(k);
@@ -135,14 +167,14 @@ function init(config) {
             for (let j = 0; j < maze[i].length; ++j) {
                 if (maze[i][j]) {
                     let barrier_cube = new THREE.Mesh(getRandomBarrier(), material);
-                    let actual_barrier = new THREE.Mesh(new THREE.BoxBufferGeometry(barrier_size, barrier_size, barrier_height),material);
+                    let actual_barrier = new THREE.Mesh(new THREE.BoxBufferGeometry(barrier_size, barrier_size, barrier_height), material);
                     // console.log([maze[i].length,maze.length]);
                     actual_barrier.position.x = barrier_cube.position.x = j * barrier_size - maze[i].length * barrier_size / 2;
                     actual_barrier.position.y = barrier_cube.position.y = i * barrier_size - maze.length * barrier_size / 2;
-                    actual_barrier.position.z = barrier_cube.position.z = 0;
+                    actual_barrier.position.z = barrier_cube.position.z = barrier_height / 2;
                     scene.add(barrier_cube);
                     barriers.push(barrier_cube);
-                    barriers_bb.push(new THREE.Box3().setFromObject(actual_barrier));
+                    barriers_bb.push(new THREE.Box3().setFromObject(barrier_cube));
                 }
             }
         }
