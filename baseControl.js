@@ -44,6 +44,12 @@ godView = function(){
 
 //初始化按钮事件
 export function start() {
+    function clearTimer(tid){
+        for(var i = tid - 3; i < tid; i++) {
+            clearInterval(i);
+        }
+    }
+
     for (var i = 0; i < 8; i++) {
         var tid;
         var btn = window.document.getElementById("button" + i);
@@ -55,6 +61,7 @@ export function start() {
             tid = setInterval(function () {
                 go(s);
             }, 50);
+            clearTimer(tid);
         };
         btn.onmouseup = function (e) {
             clearInterval(tid);
@@ -76,6 +83,7 @@ export function start() {
             tid = setInterval(function () {
                 go(s);
             }, 50);
+            clearTimer(tid);
         };
         btn.ontouchmove = function (e) {
             clearInterval(tid);
