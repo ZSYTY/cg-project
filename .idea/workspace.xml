@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="画了个门和you win的字幕">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cg-project/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/cg-project/baseControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cg-project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cg-project/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cg-project/mainView.css" beforeDir="false" afterPath="$PROJECT_DIR$/cg-project/mainView.css" afterDir="false" />
-    </list>
+    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="用了个很粗暴的方式修好了同时按下两个方向键的bug" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -133,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610768363632</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="用了个很粗暴的方式修好了同时按下两个方向键的bug">
+      <created>1610772802095</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1610772802095</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +163,7 @@
     <MESSAGE value="game.js事件控制" />
     <MESSAGE value="人物控制" />
     <MESSAGE value="画了个门和you win的字幕" />
-    <option name="LAST_COMMIT_MESSAGE" value="画了个门和you win的字幕" />
+    <MESSAGE value="用了个很粗暴的方式修好了同时按下两个方向键的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="用了个很粗暴的方式修好了同时按下两个方向键的bug" />
   </component>
 </project>
