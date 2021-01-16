@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/baseControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,7 @@
       <updated>1610372874180</updated>
       <workItem from="1610372875492" duration="1235000" />
       <workItem from="1610376132350" duration="22487000" />
-      <workItem from="1610545423737" duration="26120000" />
+      <workItem from="1610545423737" duration="26454000" />
     </task>
     <task id="LOCAL-00001" summary="模块化">
       <created>1610525637705</created>
@@ -111,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610716654711</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="第一人称、第三人称视角切换；障碍物多样化；终点标记">
+      <created>1610727171974</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1610727171974</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +131,7 @@
     <MESSAGE value="把人物改成阴间模型" />
     <MESSAGE value="game.js事件控制" />
     <MESSAGE value="人物控制" />
-    <option name="LAST_COMMIT_MESSAGE" value="人物控制" />
+    <MESSAGE value="第一人称、第三人称视角切换；障碍物多样化；终点标记" />
+    <option name="LAST_COMMIT_MESSAGE" value="第一人称、第三人称视角切换；障碍物多样化；终点标记" />
   </component>
 </project>

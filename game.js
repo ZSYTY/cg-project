@@ -133,13 +133,14 @@ function init(maze_r, maze_c) {
             for (let j = 0; j < maze[i].length; ++j) {
                 if (maze[i][j]) {
                     let barrier_cube = new THREE.Mesh(getRandomBarrier(), material);
+                    let actual_barrier = new THREE.Mesh(new THREE.BoxBufferGeometry(barrier_size, barrier_size, barrier_height),material);
                     // console.log([maze[i].length,maze.length]);
-                    barrier_cube.position.x = j * barrier_size - maze[i].length * barrier_size / 2;
-                    barrier_cube.position.y = i * barrier_size - maze.length * barrier_size / 2;
-                    barrier_cube.position.z = 0;
+                    actual_barrier.position.x = barrier_cube.position.x = j * barrier_size - maze[i].length * barrier_size / 2;
+                    actual_barrier.position.y = barrier_cube.position.y = i * barrier_size - maze.length * barrier_size / 2;
+                    actual_barrier.position.z = barrier_cube.position.z = 0;
                     scene.add(barrier_cube);
                     barriers.push(barrier_cube);
-                    barriers_bb.push(new THREE.Box3().setFromObject(barrier_cube));
+                    barriers_bb.push(new THREE.Box3().setFromObject(actual_barrier));
                 }
             }
         }
