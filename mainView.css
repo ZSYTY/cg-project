@@ -125,8 +125,8 @@ body {
 }
 
 #mazePre{
-    width: 50%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
     left: 0;
     bottom: 0;
     position: absolute;
@@ -134,7 +134,7 @@ body {
 }
 
 #humanPre{
-    width: 50%;
+    width: 100%;
     height: 70%;
     right: 0;
     bottom: 0;;
@@ -189,4 +189,5 @@ body {
 .itemFont{
     text-align: right;
     font-size:15px;
+    color: #fd971f;
 }
