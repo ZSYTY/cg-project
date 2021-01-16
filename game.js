@@ -9,6 +9,7 @@ let follow_camera;
 let first_camera;
 let camera;
 let dest;
+let dest_scaler = 1;
 let dest_bb;
 let chara, chara_available = false;
 let step = 0.2;
@@ -178,6 +179,10 @@ function init(config) {
                 }
             }
         }
+        // dest = new THREE.Mesh(new THREE.CylinderBufferGeometry(barrier_size / 2, 1000, 360), new THREE.MeshNormalMaterial({
+        //     transparent: true,
+        //     opacity: 0.5
+        // }));
         dest = new THREE.Mesh(new THREE.BoxBufferGeometry(barrier_size, barrier_size, 1000), new THREE.MeshNormalMaterial({
             transparent: true,
             opacity: 0.5
@@ -236,22 +241,20 @@ function init(config) {
     }
 
     let t0 = new Date()
+    let dest_ds = 0.25;
+    let dest_dr = 0.05;
 
     function animate() {
         let t1 = new Date(); //本次时间
         let t = t1 - t0; // 时间差
 
-        // if (rotate_camera) {
-        //     overview_camera.position.set(overview_camera.position.x + 0.01, overview_camera.position.y + 0.01, overview_camera.position.z);
-        //     let r = Math.sqrt(Math.pow(overview_camera.position.x - camera_lookat.x, 2) + Math.pow(overview_camera.position.y - camera_lookat.y, 2));
-        //     let theta = Math.atan2(overview_camera.position.y - camera_lookat.y, overview_camera.position.x - camera_lookat.x);
-        //     theta += 0.1 / t;
-        //     overview_camera.position.x = Math.cos(theta) * r + camera_lookat.x;
-        //     overview_camera.position.y = Math.sin(theta) * r + camera_lookat.y;
-        //     // overview_camera.rotateY(0.02);
-        //     overview_camera.lookAt(new THREE.Vector3(0.0, 0.0, 0.0));
-        //     overview_camera.up = new THREE.Vector3(0, 0, 1);
-        // }
+        if (dest_scaler > Math.min(Math.min(maze_c, maze_r) * 0.5, 4) || dest_scaler <= 0.1) {
+            dest_ds = -dest_ds;
+        }
+        dest_scaler += dest_ds / t;
+        dest.scale.set(dest_scaler, dest_scaler, 1);
+        dest.rotateOnAxis(new THREE.Vector3(0, 0, 1), dest_dr);
+        dest_bb = new THREE.Box3().setFromObject(dest);
 
         stats.update(); //更新性能检测框
         // if (chara_available) {
