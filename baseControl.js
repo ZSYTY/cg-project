@@ -8,8 +8,11 @@ import {
     right_up_button_clicked,
     right_down_button_clicked,
     right_left_button_clicked,
-    right_right_button_clicked, switch_to_third, switch_to_overview, switch_to_first
+    right_right_button_clicked, switch_to_third, switch_to_overview, switch_to_first,
+    screenShoot_clicked,
 } from "./game.js";
+
+
 
 var humanSex = "sex-1";
 var lightColor = "color-1";
@@ -26,7 +29,8 @@ function consoleView() {
     e.innerText = "w" + w + "h" + h;
 }
 
-export function screenShoot() {
+screenShootF = function() {
+    screenShoot_clicked();
 
 }
 

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +58,7 @@
       <updated>1610372874180</updated>
       <workItem from="1610372875492" duration="1235000" />
       <workItem from="1610376132350" duration="22487000" />
-      <workItem from="1610545423737" duration="29249000" />
-      <workItem from="1610781679034" duration="1891000" />
+      <workItem from="1610545423737" duration="28902000" />
     </task>
     <task id="LOCAL-00001" summary="模块化">
       <created>1610525637705</created>
@@ -123,21 +123,7 @@
       <option name="project" value="LOCAL" />
       <updated>1610773007922</updated>
     </task>
-    <task id="LOCAL-00010" summary="增加棱柱棱台，bux fix">
-      <created>1610780214664</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1610780214664</updated>
-    </task>
-    <task id="LOCAL-00011" summary="给终点光柱加了阴间缩放旋转效果">
-      <created>1610782653970</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1610782653970</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,8 +140,6 @@
     <MESSAGE value="人物控制" />
     <MESSAGE value="第一人称、第三人称视角切换；障碍物多样化；终点标记" />
     <MESSAGE value="障碍物fix" />
-    <MESSAGE value="增加棱柱棱台，bux fix" />
-    <MESSAGE value="给终点光柱加了阴间缩放旋转效果" />
-    <option name="LAST_COMMIT_MESSAGE" value="给终点光柱加了阴间缩放旋转效果" />
+    <option name="LAST_COMMIT_MESSAGE" value="障碍物fix" />
   </component>
 </project>
