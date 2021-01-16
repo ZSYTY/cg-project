@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
+    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="画了个门">
+      <change afterPath="$PROJECT_DIR$/assets/Default IBL.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/Blasa-1-GrainA 2.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/Blasa-1-GrainA.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/Capsule - Diffuse.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/Default IBL.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/OrangePeel-bump 3.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/OrangePeel-bump.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/OrangePeel-diffuse 2.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/OrangePeel-diffuse.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/Redwood-1-Bump-1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/Redwood-1-Diffuse-1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/door.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/door.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/多边形 1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/door/矩形 1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/win.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cg-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cg-project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/baseControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,10 +36,10 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/cg-project" />
   </component>
   <component name="ProjectId" id="1mvT4VsFbZVtBLvkxzyqHmRz8BD" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -116,6 +131,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
