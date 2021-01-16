@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="画了个门">
-      <change afterPath="$PROJECT_DIR$/assets/Default IBL.tif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/Blasa-1-GrainA 2.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/Blasa-1-GrainA.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/Capsule - Diffuse.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/Default IBL.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/OrangePeel-bump 3.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/OrangePeel-bump.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/OrangePeel-diffuse 2.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/OrangePeel-diffuse.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/Redwood-1-Bump-1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/Redwood-1-Diffuse-1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/door.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/door.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/多边形 1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/door/矩形 1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/win.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cg-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cg-project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="画了个门和you win的字幕">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-project/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/cg-project/baseControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cg-project/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-project/mainView.css" beforeDir="false" afterPath="$PROJECT_DIR$/cg-project/mainView.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +22,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/cg-project" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1mvT4VsFbZVtBLvkxzyqHmRz8BD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -126,7 +119,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610716654711</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="画了个门和you win的字幕">
+      <created>1610768301501</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1610768301501</updated>
+    </task>
+    <task id="LOCAL-00009" summary="画了个门和you win的字幕">
+      <created>1610768363632</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1610768363632</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +160,7 @@
     <MESSAGE value="把人物改成阴间模型" />
     <MESSAGE value="game.js事件控制" />
     <MESSAGE value="人物控制" />
-    <option name="LAST_COMMIT_MESSAGE" value="人物控制" />
+    <MESSAGE value="画了个门和you win的字幕" />
+    <option name="LAST_COMMIT_MESSAGE" value="画了个门和you win的字幕" />
   </component>
 </project>
