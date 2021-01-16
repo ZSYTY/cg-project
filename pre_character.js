@@ -1,7 +1,7 @@
 import * as THREE from './three.js-master/three.js-master/build/three.module.js';
-import { OBJLoader } from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
-import { MTLLoader } from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
-import {MyOBJLoader} from "./myLoader.js"
+// import { OBJLoader } from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
+// import { MTLLoader } from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
+import { MyMTLLoader, MyOBJLoader } from "./myLoader.js"
 
 function init() {
     var renderer, camera, scene, stats, controls, gui, rotate = true, light;
@@ -92,7 +92,7 @@ function init() {
     }
 
     function initCharacter() {
-        let mloader = new MTLLoader();
+        let mloader = new MyMTLLoader();
         mloader.load('assets/bro.mtl', function (materials) {
             materials.preload();
             let loader = new MyOBJLoader();
