@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="mainView.css">
+    <script>
+        var firstView,thirdView,godView;
+    </script>
+    <script type="module" src="baseControl.js" charset="utf-8"> </script>
+    <style>
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body onload="var body_loaded = true;">
+
+<div id="main">
+    <div id="start" class="full">
+        <div id="menu">
+            <div class="menuButtonDiv">
+                <table border="0" class="buttonTable">
+                    <tr style="height: 12.5%;">
+                        <td style="width: 30%;">
+                        </td>
+                        <td style="width: 5%;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="height: 12.5%;">
+                        <td class="itemFont">
+                            游戏难度
+                        </td>
+                        <td></td>
+                        <td>
+                            <button id="diff-1" class="menuButton" style="background-color: lightslategray;">
+                                简单
+                            </button>
+                        </td>
+                        <td>
+                            <button id="diff-2" class="menuButton">
+                                普通
+                            </button>
+                        </td>
+                        <td>
+                            <button id="diff-3" class="menuButton">
+                                困难
+                            </button>
+                        </td>
+                    </tr>
+                    <tr style="height: 12.5%;">
+
+                        <td class="itemFont">
+                            人物性别
+                        </td>
+                        <td></td>
+                        <td>
+                            <button id="sex-1" class="menuButton" style="background-color: lightslategray;">
+                                男
+                            </button>
+                        </td>
+                        <td>
+                            <button id="sex-2" class="menuButton">
+                                女
+                            </button>
+                        </td>
+                        <td>
+                            <button id="sex-3" class="menuButton">
+                                其他
+                            </button>
+                        </td>
+                    </tr>
+                    <tr style="height: 12.5%;">
+
+                        <td class="itemFont">
+                            光源颜色
+                        </td>
+                        <td></td>
+                        <td>
+                            <button id="color-1" class="menuButton" style="background-color: lightslategray;">
+                                白
+                            </button>
+                        </td>
+                        <td>
+                            <button id="color-2" class="menuButton">
+                                蓝
+                            </button>
+                        </td>
+                        <td>
+                            <button id="color-3" class="menuButton">
+                                红
+                            </button>
+                        </td>
+                    </tr>
+                    <tr style="height: 12.5%;">
+                        <td class="itemFont">
+                            墙体
+                        </td>
+                        <td></td>
+                        <td>
+                            <button id="wall-1" class="menuButton" style="background-color: lightslategray;">
+                                金属
+                            </button>
+                        </td>
+                        <td>
+                            <button id="wall-2" class="menuButton">
+                                木头
+                            </button>
+                        </td>
+                        <td>
+                            <button id="wall-3" class="menuButton">
+                                光滑
+                            </button>
+                        </td>
+                    </tr>
+                    <tr style="height: 12.5%;">
+                        <td class="itemFont">
+                            obj模型
+                        </td>
+                        <td></td>
+                        <td>
+                            <button id="objIn" class="menuButton">
+                                导入
+                            </button>
+                        </td>
+                        <td></td>
+                        <td>
+                            <button id="objOut" class="menuButton">
+                                导出
+                            </button>
+                        </td>
+                    </tr>
+                    <tr style="height: 7.5%;">
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="height: 20%;">
+                        <td colspan="5">
+                            <div style="height: 100%;height: 100%;position: relative;">
+                                <button id="startGame" class="startButton">
+                                    开始游戏
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="preView">
+            <div id="titlePre">
+            </div>
+            <div id="mazePre">
+
+            </div>
+            <div id="humanPre">
+            </div>
+        </div>
+    </div>
+    <div id="game" class="full" style="visibility:hidden;">
+
+        <div id="consoleDiv" style="width: 10%;height: 10%;position: absolute; top: 5%;left: 5%;" >
+            <button style="position:absolute;" onclick="screenShoot()">
+                截图
+            </button>
+        </div>
+
+        <div id="firstDiv" style="width: 10%;height: 10%;position: absolute; top: 5%;left: 20%;" >
+            <button style="position:absolute;" onclick="firstView()">
+                第一人称
+            </button>
+        </div>
+
+        <div id="thirdDiv" style="width: 10%;height: 10%;position: absolute; top: 5%;left: 35%;" >
+            <button style="position:absolute;" onclick="thirdView()">
+                第三人称
+            </button>
+        </div>
+
+        <div id="godDiv" style="width: 10%;height: 10%;position: absolute; top: 5%;left: 50%;" >
+            <button style="position:absolute;" onclick="godView()">
+                上帝视角
+            </button>
+        </div>
+
+        <button onclick="consoleView()">console</button>
+
+        <div class="buttonDiv" style=" right: 10vw;">
+            <table class="buttonTable" border="0">
+                <tr class="buttonTr">
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate0" id="button4">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr class="buttonTr">
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate270"  id="button7">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate90" id="button5">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="buttonTr">
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate180"  id="button6">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="buttonDiv" style=" left: 10vw;">
+            <table class="buttonTable" border="0">
+                <tr class="buttonTr">
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate0" id="button0">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr class="buttonTr">
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate270" id="button3">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate90" id="button1">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="buttonTr">
+                    <td></td>
+                    <td>
+                        <div class="full">
+                            <button class="buttonButton backGroundRotate180" id="button2">
+                            </button>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!--    <script type="module" src="three.js-master/three.js-master/build/three.min.js"></script>-->
+<!--    <script type="module" src="three.js-master/three.js-master/examples/jsm/loaders/OBJLoader2.js"></script>-->
+<script src="stats.min.js"></script>
+<script src="dat.gui.min.js"></script>
+<!--<script type="module" src="index.js"></script>-->
+<script>
+    document.write(`<script type=\"module\" src=\"index.js?${Math.random()}\"><\/script>`);
+</script>
+</body>
+
+</html>

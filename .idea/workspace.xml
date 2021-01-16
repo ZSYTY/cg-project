@@ -1,80 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22b29c5f-ca2c-40a4-8590-ab9ecf2f5440" name="Default Changelist" comment="加了人称按钮">
+    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/baseControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/cg-project" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
-  <component name="ProjectId" id="1n1OEaunHo3o4JJQao2KSUPp3mE" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mvT4VsFbZVtBLvkxzyqHmRz8BD" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\Computer Graphics\final\cg-project\assets" />
+      <recent name="D:\Documents\Computer Graphics\final\cg-project" />
+      <recent name="D:\Documents\Computer Graphics\finalproject\cg-project" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="22b29c5f-ca2c-40a4-8590-ab9ecf2f5440" name="Default Changelist" comment="" />
-      <created>1610554023434</created>
+      <changelist id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="" />
+      <created>1610372874180</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1610554023434</updated>
-      <workItem from="1610554026408" duration="154000" />
-      <workItem from="1610554212001" duration="489000" />
-      <workItem from="1610698610170" duration="1195000" />
-      <workItem from="1610716634915" duration="1995000" />
-      <workItem from="1610767218350" duration="160000" />
+      <updated>1610372874180</updated>
+      <workItem from="1610372875492" duration="1235000" />
+      <workItem from="1610376132350" duration="22487000" />
+      <workItem from="1610545423737" duration="26120000" />
     </task>
-    <task id="LOCAL-00001" summary="改了下按钮图标">
-      <created>1610699416006</created>
+    <task id="LOCAL-00001" summary="模块化">
+      <created>1610525637705</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1610699416007</updated>
+      <updated>1610525637706</updated>
     </task>
-    <task id="LOCAL-00002" summary="加了人称按钮">
-      <created>1610718924778</created>
+    <task id="LOCAL-00002" summary="模块化2">
+      <created>1610526915112</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1610718924778</updated>
+      <updated>1610526915112</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="添加标题，人物预览">
+      <created>1610547140337</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610547140337</updated>
+    </task>
+    <task id="LOCAL-00004" summary="微调">
+      <created>1610548516594</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610548516594</updated>
+    </task>
+    <task id="LOCAL-00005" summary="把人物改成阴间模型">
+      <created>1610551546451</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610551546451</updated>
+    </task>
+    <task id="LOCAL-00006" summary="game.js事件控制">
+      <created>1610699627134</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610699627134</updated>
+    </task>
+    <task id="LOCAL-00007" summary="人物控制">
+      <created>1610716654711</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1610716654711</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="改了下按钮图标" />
-    <MESSAGE value="加了人称按钮" />
-    <option name="LAST_COMMIT_MESSAGE" value="加了人称按钮" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="模块化" />
+    <MESSAGE value="模块化2" />
+    <MESSAGE value="添加标题，人物预览" />
+    <MESSAGE value="微调" />
+    <MESSAGE value="把人物改成阴间模型" />
+    <MESSAGE value="game.js事件控制" />
+    <MESSAGE value="人物控制" />
+    <option name="LAST_COMMIT_MESSAGE" value="人物控制" />
   </component>
 </project>

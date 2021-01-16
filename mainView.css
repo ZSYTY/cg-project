@@ -1,0 +1,192 @@
+body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#main {
+    width: 560px;
+    height: 320px;
+}
+
+@media screen and (orientation: portrait) {
+
+    #main {
+        position: absolute;
+        width: 100vh;
+        height: 100vw;
+        top: 0;
+        left: 100vw;
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        transform-origin: 0% 0%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    #main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+   
+.full{
+    width: 100%;
+    height: 100%;
+    /* position: absolute; */
+}
+
+.buttonDiv {
+    position: absolute;
+    width: 24vmax;
+    height: 24vmax;
+    bottom: 10vw;
+    /* background-color: aqua; */
+}
+
+.buttonTable{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-spacing: 0;
+    table-layout: fixed;
+    /* background-color: brown; */
+}
+
+.buttonTr{
+    width: 33%;
+    height: 33%;
+}
+
+.buttonButton{
+    position: relative;
+    background-image: url("pic/Arrow.png");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    opacity:0.7;
+    
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.backGroundRotate0{
+    transform:rotate(0deg);
+    -ms-transform:rotate(0deg); /* Internet Explorer */
+    -moz-transform:rotate(0deg); /* Firefox */
+    -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+}
+
+.backGroundRotate90{
+    transform:rotate(90deg);
+    -ms-transform:rotate(90deg); /* Internet Explorer */
+    -moz-transform:rotate(90deg); /* Firefox */
+    -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+}
+
+.backGroundRotate180{
+    transform:rotate(180deg);
+    -ms-transform:rotate(180deg); /* Internet Explorer */
+    -moz-transform:rotate(180deg); /* Firefox */
+    -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+}
+
+.backGroundRotate270{
+    transform:rotate(270deg);
+    -ms-transform:rotate(270deg); /* Internet Explorer */
+    -moz-transform:rotate(270deg); /* Firefox */
+    -webkit-transform:rotate(270deg); /* Safari 和 Chrome */
+}
+
+#preView{
+    width: 50%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    position: absolute;
+    background-color: blueviolet;
+}
+
+#titlePre{
+    width: 100%;
+    height: 30%;
+    right: 0;
+    top: 0;
+    position: absolute;
+    background-color:deeppink;
+}
+
+#mazePre{
+    width: 50%;
+    height: 70%;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    background-color:darkcyan;
+}
+
+#humanPre{
+    width: 50%;
+    height: 70%;
+    right: 0;
+    bottom: 0;;
+    position: absolute;
+    background-color:darkorange;
+}
+
+#menu{
+    width: 50%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    /* background-color:coral; */
+}
+
+.menuButtonDiv{
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 5%;
+    position: absolute;
+    /* background-color:cornflowerblue; */
+}
+
+.menuButton{
+    width: 80%;
+    height: 80%;
+    /* background-image: url("pic/Arrow.png"); */
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    border: 0;
+    left: 10%;
+    top: 10%;
+    position: relative;
+    background-color:lightgray;
+}
+
+
+.startButton{
+    width: 50%;
+    height: 70%;
+    /* background-image: url("pic/Arrow.png"); */
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    border: 0;
+    left: 25%;
+    position: relative;
+    background-color:lightgray;
+}
+
+.itemFont{
+    text-align: right;
+    font-size:15px;
+}

@@ -1,0 +1,290 @@
+newmtl m2
+map_Kd socks.tga
+Ka 0.5 0.5 0.5
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m3
+map_Kd gloves.tga
+Ka 0.4980392 0.4980392 0.4980392
+Kd 1 1 1
+Ks 1 1 1
+Ns 100
+d 1
+
+newmtl m5
+map_Kd bunny_skin.tga
+Ka 0.5 0.5 0.5
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m6
+map_Kd tga\body02_MikuAp.tga
+Ka 0.5 0.5 0.5
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m9
+map_Kd tga\body02_MikuAp.tga
+Ka 0.5 0.5 0.5
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m10
+map_Kd shoes1.tga
+Ka 0.5 0.5 0.5
+Kd 1 1 1
+Ks 0.15 0.15 0.15
+Ns 6
+d 1
+
+newmtl m11
+map_Kd shoes1.tga
+Ka 0.5 0.5 0.5
+Kd 1 1 1
+Ks 0.15 0.15 0.15
+Ns 6
+d 1
+
+newmtl m13
+map_Kd shoes1.tga
+Ka 0.5 0.5 0.5
+Kd 0.5019608 0.2509804 0
+Ks 0.15 0.15 0.15
+Ns 6
+d 1
+
+newmtl m16
+map_Kd lace.png
+Ka 0.6 0.6 0.6
+Kd 1 1 1
+Ks 0.15 0.15 0.15
+Ns 50
+d 0.999
+
+newmtl m17
+map_Kd top1.png
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 6
+d 1
+
+newmtl m18
+map_Kd gloves.tga
+Ka 0.4980392 0.4980392 0.4980392
+Kd 1 1 1
+Ks 1 1 1
+Ns 5
+d 1
+
+newmtl m19
+map_Kd top.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 76
+d 1
+
+newmtl m20
+map_Kd gloves.tga
+Ka 0.4980392 0.4980392 0.4980392
+Kd 1 1 1
+Ks 1 1 1
+Ns 5
+d 1
+
+newmtl m21
+Ka 0.8431373 0.1568628 0.1568628
+Kd 0.8823529 0.5921569 0.5764706
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m22
+Ka 0 0 0
+Kd 0 0 0
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m23
+map_Kd hair4.tga
+Ka 0.4980392 0.4980392 0.4980392
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 0.98
+
+newmtl m25
+map_Kd hair4.tga
+Ka 0.4980392 0.4980392 0.4980392
+Kd 1 1 1
+Ks 0 0 0
+Ns 50
+d 1
+
+newmtl m26
+map_Kd hair4.tga
+Ka 0.5 0.5 0.5
+Kd 1 1 1
+Ks 0 0 0
+Ns 50
+d 1
+
+newmtl m27
+map_Kd hair4.tga
+Ka 0.5019608 0.5019608 0.5019608
+Kd 1 1 1
+Ks 0 0 0
+Ns 50
+d 1
+
+newmtl m28
+Ka 0 0 0
+Kd 0.2901961 0.09411765 0
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m29
+map_Kd ribbon2.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m30
+Ka 0.4666667 0.2352941 0
+Kd 1 1 0.05098039
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m31
+map_Kd ribbon1.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m32
+map_Kd ribbon2.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 0
+d 0.99
+
+newmtl m33
+Ka 0 0 0
+Kd 0.2901961 0.09411765 0
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m34
+map_Kd ribbon2.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m35
+Ka 0.4666667 0.2352941 0
+Kd 1 1 0.05098039
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m36
+map_Kd ribbon1.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m37
+map_Kd ribbon2.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 0
+d 0.99
+
+newmtl m38
+map_Kd ribbon2.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 0
+d 0.99
+
+newmtl m40
+map_Kd b2.tga
+Ka 1 1 1
+Kd 0.831 0.831 0.831
+Ks 0.319 0.319 0.319
+Ns 50
+d 1
+
+newmtl m41
+map_Kd ribbon2.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 0
+d 1
+
+newmtl m42
+map_Kd ribbon2.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 0
+d 0.99
+
+newmtl m43
+map_Kd top.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m44
+map_Kd gloves.tga
+Ka 0.4980392 0.4980392 0.4980392
+Kd 1 1 1
+Ks 1 1 1
+Ns 5
+d 1
+
+newmtl m45
+map_Kd top.tga
+Ka 0.7529412 0.7529412 0.7529412
+Kd 1 1 1
+Ks 0 0 0
+Ns 5
+d 1
+
+newmtl m46
+map_Kd gloves.tga
+Ka 0.4980392 0.4980392 0.4980392
+Kd 1 1 1
+Ks 1 1 1
+Ns 5
+d 1
+
