@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="用了个很粗暴的方式修好了同时按下两个方向键的bug" />
+    <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="...">
+      <change afterPath="$PROJECT_DIR$/canvas2image.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baseControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/baseControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +22,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/cg-project" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -64,6 +70,7 @@
       <workItem from="1610372875492" duration="1235000" />
       <workItem from="1610376132350" duration="22487000" />
       <workItem from="1610545423737" duration="26120000" />
+      <workItem from="1610780446487" duration="5191000" />
     </task>
     <task id="LOCAL-00001" summary="模块化">
       <created>1610525637705</created>
@@ -135,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610772802095</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="...">
+      <created>1610780541020</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1610780541021</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +178,7 @@
     <MESSAGE value="人物控制" />
     <MESSAGE value="画了个门和you win的字幕" />
     <MESSAGE value="用了个很粗暴的方式修好了同时按下两个方向键的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="用了个很粗暴的方式修好了同时按下两个方向键的bug" />
+    <MESSAGE value="..." />
+    <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
 </project>

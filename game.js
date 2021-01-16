@@ -481,6 +481,22 @@ function switch_to_first() {
     camera = first_camera;
 }
 
+function screenShoot_clicked(){
+    var oCanvas = document.getElementById("game");
+    Canvas2Image.saveAsPNG(oCanvas);  // 这将会提示用户保存PNG图片
+
+
+// 返回一个包含PNG图片的<img>元素
+    var oImgPNG = Canvas2Image.saveAsPNG(oCanvas, true);
+
+// 这些函数都可以接受高度和宽度的参数
+// 可以用来调整图片大小
+
+// 把画布保存成100x100的png格式
+    Canvas2Image.saveAsPNG(oCanvas, false, 100, 100);
+
+}
+
 export {
     start_game,
     left_up_button_clicked,
@@ -493,6 +509,7 @@ export {
     right_right_button_clicked,
     switch_to_overview,
     switch_to_third,
-    switch_to_first
+    switch_to_first,
+    screenShoot_clicked
 };
 

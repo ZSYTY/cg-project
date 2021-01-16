@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" type="text/css" href="mainView.css">
     <script>
-        var firstView,thirdView,godView;
+        var firstView,thirdView,godView,screenShootF;
     </script>
     <script type="module" src="baseControl.js" charset="utf-8"> </script>
+    <script src="https://cdn.bootcss.com/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="canvas2image.js" ></script>
     <style>
         * {
             -webkit-user-select: none;
@@ -97,7 +99,7 @@
                         </td>
                         <td>
                             <button id="color-3" class="menuButton">
-                                红
+                                红色
                             </button>
                         </td>
                     </tr>
@@ -168,9 +170,9 @@
         </div>
     </div>
     <div id="game" class="full" style="visibility:hidden;">
-
+        <div id = "pic"> </div>
         <div id="consoleDiv" style="width: 20%;height: 10%;position: absolute; top: 5%;left: 5%;" >
-            <button class="menuButton" style="position:absolute;" onclick="screenShoot()">
+            <button id ="screenShoot" class="menuButton" style="position:absolute;" onclick="screenShootF()">
                 截图
             </button>
         </div>
@@ -273,6 +275,7 @@
         </div>
     </div>
 </div>
+
 <!--    <script type="module" src="three.js-master/three.js-master/build/three.min.js"></script>-->
 <!--    <script type="module" src="three.js-master/three.js-master/examples/jsm/loaders/OBJLoader2.js"></script>-->
 <script src="stats.min.js"></script>
