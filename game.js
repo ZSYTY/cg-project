@@ -358,7 +358,7 @@ function init(config) {
 let won = false;
 
 function check_win() {
-    if (!won &&  new THREE.Box3().setFromObject(chara).intersectsBox(dest_bb)) {
+    if (!won && new THREE.Box3().setFromObject(chara).intersectsBox(dest_bb)) {
         let loader = new MyOBJLoader();
         loader.load('assets/win.obj', function (model) {
             let bb = new THREE.Box3().setFromObject(model);
@@ -455,11 +455,45 @@ function left_down_button_clicked() {
 }
 
 function left_left_button_clicked() {
-
+    let dx = step * Math.sin(chara.cur_rotate - Math.PI / 2);
+    let dy = -step * Math.cos(chara.cur_rotate - Math.PI / 2);
+    let bb = new THREE.Box3().setFromObject(chara);
+    bb.max.x -= 0.08;
+    bb.max.y -= 0.08;
+    bb.min.x += 0.08;
+    bb.min.y += 0.08;
+    bb.translate(new THREE.Vector3(dx, dy, 0));
+    for (let i = 0; i < barriers_bb.length; ++i) {
+        if (bb.intersectsBox(barriers_bb[i])) {
+            return;
+        }
+    }
+    chara.position.x += dx;
+    chara.position.y += dy;
+    update_follow_camera();
+    update_first_camera();
+    check_win();
 }
 
 function left_right_button_clicked() {
-
+    let dx = step * Math.sin(chara.cur_rotate + Math.PI / 2);
+    let dy = -step * Math.cos(chara.cur_rotate + Math.PI / 2);
+    let bb = new THREE.Box3().setFromObject(chara);
+    bb.max.x -= 0.08;
+    bb.max.y -= 0.08;
+    bb.min.x += 0.08;
+    bb.min.y += 0.08;
+    bb.translate(new THREE.Vector3(dx, dy, 0));
+    for (let i = 0; i < barriers_bb.length; ++i) {
+        if (bb.intersectsBox(barriers_bb[i])) {
+            return;
+        }
+    }
+    chara.position.x += dx;
+    chara.position.y += dy;
+    update_follow_camera();
+    update_first_camera();
+    check_win();
 }
 
 function right_up_button_clicked() {

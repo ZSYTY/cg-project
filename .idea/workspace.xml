@@ -138,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610797148613</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="移除gui，添加youwin">
+      <created>1610953255393</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1610953255393</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +177,7 @@
     <MESSAGE value="第一人称、第三人称视角切换；障碍物多样化；终点标记" />
     <MESSAGE value="障碍物fix" />
     <MESSAGE value="repair" />
-    <option name="LAST_COMMIT_MESSAGE" value="repair" />
+    <MESSAGE value="移除gui，添加youwin" />
+    <option name="LAST_COMMIT_MESSAGE" value="移除gui，添加youwin" />
   </component>
 </project>
