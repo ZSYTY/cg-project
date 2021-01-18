@@ -36,6 +36,7 @@ function init(config) {
     function initRenderer() {
         renderer = new THREE.WebGLRenderer({antialias: true, alpha: false}); //实例化渲染器
         renderer.setSize(width, height); //设置宽和高
+        renderer.domElement.setAttribute("id","fuck");
         parentDOM.appendChild(renderer.domElement); //添加到dom
     }
 
@@ -484,19 +485,43 @@ function switch_to_first() {
     camera = first_camera;
 }
 
+function saveBase64AsFile(base64, fileName) {
+
+    var link = document.createElement("a");
+
+    link.setAttribute("href", base64);
+    link.setAttribute("download", fileName);
+    link.click();
+}
+
 function screenShoot_clicked(){
-    var oCanvas = document.getElementById("game");
-    Canvas2Image.saveAsPNG(oCanvas);  // 这将会提示用户保存PNG图片
+    var image = new Image();
+    renderer.render(scene, camera);//此处renderer为three.js里的渲染器，scene为场景 camera为相机
 
+    let imgData = renderer.domElement.toDataURL("image/jpeg");//这里可以选择png格式jpeg格式
+    image.src = imgData;
 
-// 返回一个包含PNG图片的<img>元素
-    var oImgPNG = Canvas2Image.saveAsPNG(oCanvas, true);
+    //document.body.appendChild(image);//这样就可以查看截出来的图片了
+    saveBase64AsFile(imgData, "test.jpg");
+    return;
+
+    var oCanvas = document.getElementById("fuck");
+    //Canvas2Image.saveAsPNG(oCanvas);  // 这将会提示用户保存PNG图片
+    // var oImgPNG = Canvas2Image.saveAsPNG(oCanvas);
+
+    var strDataURI = oCanvas.toDataURL();
+    console.log(strDataURI);
+
+    context.drawImage(img, 0, 0, w, h);
+    var base64Img = oCanvas.toDataURL('image/jpg');
+    console.log(base64Img);
+
 
 // 这些函数都可以接受高度和宽度的参数
 // 可以用来调整图片大小
 
 // 把画布保存成100x100的png格式
-    Canvas2Image.saveAsPNG(oCanvas, false, 100, 100);
+// Canvas2Image.saveAsPNG(oCanvas, false, 100, 100);
 
 }
 
