@@ -12,7 +12,8 @@ import {
     screenShoot_clicked,
 } from "./game.js";
 
-import { scene } from "./pre.js";
+import { scene, barrier } from "./pre.js";
+import { char } from "./pre_character.js";
 import { MyOBJExporter } from "./myExporter.js"
 import { OBJExporter } from "./three.js-master/three.js-master/examples/jsm/exporters/OBJExporter.js"
 
@@ -176,7 +177,7 @@ export function start() {
 
         let exporter = new OBJExporter();
         console.log(scene);
-        let data = exporter.parse(scene);
+        let data = exporter.parse(char);
         // console.log(exporter.parse(scene));
         const req = new XMLHttpRequest();
         req.open('POST', "localhost", true);

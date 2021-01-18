@@ -54,10 +54,11 @@ MyOBJExporter.prototype = {
                 if (vertices !== undefined) {
                     console.log(vertices);
                     for (let i in vertices) {
+                        console.log(vertices.getX(i));
                         vertex.x = vertices.getX(i);
                         vertex.y = vertices.getY(i);
                         vertex.z = vertices.getZ(i);
-
+                        console.log(vertex);
                         vertex.applyMatrix4(mesh.matrixWorld);
 
                         result += `v ${vertex.x} ${vertex.y} ${vertex.z}\n`;

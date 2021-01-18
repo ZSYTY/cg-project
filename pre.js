@@ -1,6 +1,6 @@
 import * as THREE from './three.js-master/three.js-master/build/three.module.js';
 import primMaze from './maze.js'
-export var scene;
+export var scene, barrier;
 function init() {
     var renderer, camera, stats, controls, gui, rotate = true;
 
@@ -93,6 +93,7 @@ function init() {
                     barrier_cube.position.x = j * barrier_size - maze.length * barrier_size / 2;
                     barrier_cube.position.y = i * barrier_size - maze.length * barrier_size / 2;
                     barrier_cube.position.z = 0;
+                    barrier = barrier_cube;
                     scene.add(barrier_cube);
                 }
             }
