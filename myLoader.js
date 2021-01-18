@@ -11,10 +11,12 @@ import {
     MeshPhongMaterial,
     Points,
     PointsMaterial,
-    Vector3
+    Vector3,
+    LoaderUtils
 } from './three.js-master/three.js-master/build/three.module.js';
+import { MTLLoader } from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
 
-const MyOBJLoader = (function() {
+const MyOBJLoader = (function () {
 
     // o object_name | g group_name
     let object_pattern = /^[og]\s*(.+)?/;
@@ -36,7 +38,7 @@ const MyOBJLoader = (function() {
             materials: {},
             materialLibraries: [],
 
-            startObject: function(name, fromDeclaration) {
+            startObject: function (name, fromDeclaration) {
 
                 if (this.object && this.object.fromDeclaration === false) {
                     this.object.name = name;
@@ -65,7 +67,7 @@ const MyOBJLoader = (function() {
                     materials: [],
                     smooth: true,
 
-                    startMaterial: function(name, libraries) {
+                    startMaterial: function (name, libraries) {
                         let previous = this._finalize(false);
 
                         if (previous && (previous.inherited || previous.groupCount <= 0)) {
@@ -101,14 +103,14 @@ const MyOBJLoader = (function() {
 
                     },
 
-                    currentMaterial: function() {
+                    currentMaterial: function () {
                         if (this.materials.length > 0) {
                             return this.materials[this.materials.length - 1];
                         }
                         return undefined;
                     },
 
-                    _finalize: function(isEnd) {
+                    _finalize: function (isEnd) {
                         let last = this.currentMaterial();
                         if (last && last.groupEnd === - 1) {
                             last.groupEnd = this.geometry.vertices.length / 3;
@@ -131,33 +133,33 @@ const MyOBJLoader = (function() {
                 };
 
                 if (previousMaterial && previousMaterial.name) {
-                    this.object.materials.push({inherited: true, ...previousMaterial.clone(0)});
+                    this.object.materials.push({ inherited: true, ...previousMaterial.clone(0) });
                 }
                 this.objects.push(this.object);
             },
 
-            finalize: function() {
+            finalize: function () {
                 if (this.object && this.object.isInit === true) {
                     this.object._finalize(true);
                 }
             },
 
-            parseVertexIndex: function(value, len) {
+            parseVertexIndex: function (value, len) {
                 let index = parseInt(value, 10);
                 return (index >= 0 ? index - 1 : index + len / 3) * 3;
             },
 
-            parseNormalIndex: function(value, len) {
+            parseNormalIndex: function (value, len) {
                 let index = parseInt(value, 10);
                 return (index >= 0 ? index - 1 : index + len / 3) * 3;
             },
 
-            parseUVIndex: function(value, len) {
+            parseUVIndex: function (value, len) {
                 let index = parseInt(value, 10);
                 return (index >= 0 ? index - 1 : index + len / 2) * 2;
             },
 
-            addVertex: function(a, b, c) {
+            addVertex: function (a, b, c) {
                 let src = this.vertices;
                 let dst = this.object.geometry.vertices;
                 dst.push(src[a + 0], src[a + 1], src[a + 2]);
@@ -165,19 +167,19 @@ const MyOBJLoader = (function() {
                 dst.push(src[c + 0], src[c + 1], src[c + 2]);
             },
 
-            addVertexPoint: function(a) {
+            addVertexPoint: function (a) {
                 let src = this.vertices;
                 let dst = this.object.geometry.vertices;
                 dst.push(src[a + 0], src[a + 1], src[a + 2]);
             },
 
-            addVertexLine: function(a) {
+            addVertexLine: function (a) {
                 let src = this.vertices;
                 let dst = this.object.geometry.vertices;
                 dst.push(src[a + 0], src[a + 1], src[a + 2]);
             },
 
-            addNormal: function(a, b, c) {
+            addNormal: function (a, b, c) {
                 let src = this.normals;
                 let dst = this.object.geometry.normals;
                 dst.push(src[a + 0], src[a + 1], src[a + 2]);
@@ -185,7 +187,7 @@ const MyOBJLoader = (function() {
                 dst.push(src[c + 0], src[c + 1], src[c + 2]);
             },
 
-            addFaceNormal: function(a, b, c) {
+            addFaceNormal: function (a, b, c) {
                 let src = this.vertices;
                 let dst = this.object.geometry.normals;
 
@@ -210,7 +212,7 @@ const MyOBJLoader = (function() {
                 dst.push(cb.x, cb.y, cb.z);
             },
 
-            addColor: function(a, b, c) {
+            addColor: function (a, b, c) {
                 let src = this.colors;
                 let dst = this.object.geometry.colors;
                 if (src[a] !== undefined) dst.push(src[a + 0], src[a + 1], src[a + 2]);
@@ -218,7 +220,7 @@ const MyOBJLoader = (function() {
                 if (src[c] !== undefined) dst.push(src[c + 0], src[c + 1], src[c + 2]);
             },
 
-            addUV: function(a, b, c) {
+            addUV: function (a, b, c) {
                 let src = this.uvs;
                 let dst = this.object.geometry.uvs;
                 dst.push(src[a + 0], src[a + 1]);
@@ -226,20 +228,20 @@ const MyOBJLoader = (function() {
                 dst.push(src[c + 0], src[c + 1]);
             },
 
-            addDefaultUV: function() {
+            addDefaultUV: function () {
                 let dst = this.object.geometry.uvs;
                 dst.push(0, 0);
                 dst.push(0, 0);
                 dst.push(0, 0);
             },
 
-            addUVLine: function(a) {
+            addUVLine: function (a) {
                 let src = this.uvs;
                 let dst = this.object.geometry.uvs;
                 dst.push(src[a + 0], src[a + 1]);
             },
 
-            addFace: function(a, b, c, ua, ub, uc, na, nb, nc) {
+            addFace: function (a, b, c, ua, ub, uc, na, nb, nc) {
                 let vLen = this.vertices.length;
                 let ia = this.parseVertexIndex(a, vLen);
                 let ib = this.parseVertexIndex(b, vLen);
@@ -271,7 +273,7 @@ const MyOBJLoader = (function() {
 
             },
 
-            addPointGeometry: function(vertices) {
+            addPointGeometry: function (vertices) {
                 this.object.geometry.type = 'Points';
                 let vLen = this.vertices.length;
                 for (let vertex of vertices) {
@@ -281,7 +283,7 @@ const MyOBJLoader = (function() {
                 }
             },
 
-            addLineGeometry: function(vertices, uvs) {
+            addLineGeometry: function (vertices, uvs) {
                 this.object.geometry.type = 'Line';
                 let vLen = this.vertices.length;
                 let uvLen = this.uvs.length;
@@ -310,7 +312,7 @@ const MyOBJLoader = (function() {
 
         constructor: MyOBJLoader,
 
-        load: function(url, onLoad, onProgress, onError) {
+        load: function (url, onLoad, onProgress, onError) {
 
             let self = this;
 
@@ -332,12 +334,12 @@ const MyOBJLoader = (function() {
             }, onProgress, onError);
         },
 
-        setMaterials: function(materials) {
+        setMaterials: function (materials) {
             this.materials = materials;
             return this;
         },
 
-        parse: function(text) {
+        parse: function (text) {
 
             let state = new ParserState();
 
@@ -542,4 +544,78 @@ const MyOBJLoader = (function() {
 
 })();
 
-export { MyOBJLoader };
+
+var MyMTLLoader = function (manager) {
+    Loader.call(this, manager);
+};
+
+MyMTLLoader.prototype = Object.assign(Object.create(Loader.prototype), {
+
+    constructor: MyMTLLoader,
+
+    load: function (url, onLoad, onProgress, onError) {
+        var self = this;
+        var path = ( this.path === '' ) ? LoaderUtils.extractUrlBase( url ) : this.path;
+        var loader = new FileLoader(this.manager);
+        loader.setPath(this.path);
+        loader.setRequestHeader(this.requestHeader);
+        loader.setWithCredentials(this.withCredentials);
+        loader.load(url, function (text) {
+            try {
+                onLoad(self.parse(text, path));
+            } catch (e) {
+                if (onError) {
+                    onError(e);
+                } else {
+                    console.error(e);
+                }
+                self.manager.itemError(url);
+            }
+        }, onProgress, onError);
+    },
+
+    setMaterialOptions: function (value) {
+        this.materialOptions = value;
+        return this;
+    },
+
+
+    parse: function (text, path) {
+
+        var lines = text.split('\n');
+        var info = {};
+        var materialsInfo = {};
+
+        for (let line of lines) {
+            line = line.trim();
+
+            if (line.length === 0 || line.charAt(0) === '#') {
+                continue;
+            }
+
+            var idx = line.indexOf(' ');
+            var key = ((idx >= 0) ? line.substring(0, idx) : line).toLowerCase();
+            var value = ((idx >= 0) ? line.substring(idx + 1) : '').trim();
+
+            if (key === 'newmtl') {
+                info = { name: value };
+                materialsInfo[value] = info;
+            } else {
+                if (key === 'ka' || key === 'kd' || key === 'ks' || key === 'ke') {
+                    info[key] = value.split(/\s+/, 3).map(item => parseFloat(item));
+                } else {
+                    info[key] = value;
+                }
+            }
+        }
+
+        var materialCreator = new MTLLoader.MaterialCreator(this.resourcePath || path, this.materialOptions);
+        materialCreator.setCrossOrigin(this.crossOrigin);
+        materialCreator.setManager(this.manager);
+        materialCreator.setMaterials(materialsInfo);
+        return materialCreator;
+    }
+
+});
+
+export { MyOBJLoader, MyMTLLoader };
