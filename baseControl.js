@@ -130,7 +130,7 @@ export function start() {
             e.target.style.backgroundColor = "lightslategray";
         };
     }
-    var set = "sex-";
+    /*var set = "sex-";
     for (var i = 1; i <= 3; i++) {
         var btn = window.document.getElementById("sex-" + i);
         btn.onmousedown = function (e) {
@@ -141,7 +141,7 @@ export function start() {
             }
             e.target.style.backgroundColor = "lightslategray";
         };
-    }
+    }*/
 
     const textList = ['metal_wall.jpg', 'wooden_wall.jpg', 'smooth_wall.jpg']
     for (var i = 1; i <= 3; i++) {
