@@ -145,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610953255393</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="添加左右移动">
+      <created>1610953627189</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1610953627189</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +185,7 @@
     <MESSAGE value="障碍物fix" />
     <MESSAGE value="repair" />
     <MESSAGE value="移除gui，添加youwin" />
-    <option name="LAST_COMMIT_MESSAGE" value="移除gui，添加youwin" />
+    <MESSAGE value="添加左右移动" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加左右移动" />
   </component>
 </project>
