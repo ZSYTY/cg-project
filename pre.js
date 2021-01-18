@@ -1,7 +1,8 @@
 import * as THREE from './three.js-master/three.js-master/build/three.module.js';
 import primMaze from './maze.js'
+export var scene;
 function init() {
-    var renderer, camera, scene, stats, controls, gui, rotate = true;
+    var renderer, camera, stats, controls, gui, rotate = true;
 
     var base_floor;
     const barrier_size = 1;

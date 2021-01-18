@@ -10,7 +10,7 @@ import {
     BufferGeometry
 } from './three.js-master/three.js-master/build/three.module.js';
 
-MyOBJExporter = function () { };
+var MyOBJExporter = function () { };
 
 MyOBJExporter.prototype = {
 
@@ -26,14 +26,14 @@ MyOBJExporter.prototype = {
         let vertex  = new Vector3();
         let color   = new Color();
         let normal  = new Vector3();
-        let uv      = new Vector2();
+        let face    = [];
 
         const parseMesh = mesh => {
             let vertexCnt       = 0;
             let normalsCnt      = 0;
             let vertexUvsCnt    = 0;
             let { geometry }    = mesh;
-            let normalMatrix    = Matrix3();
+            let normalMatrix    = new Matrix3();
 
             if (geometry instanceof Geometry) {
                 geometry = BufferGeometry.setFromObject(mesh);
@@ -45,13 +45,14 @@ MyOBJExporter.prototype = {
                 let uvs = geometry.getAttribute('uv');
                 let indices = geometry.getIndex();
 
-                output += `o ${mesh.name}\n`;
+                result += `o ${mesh.name}\n`;
 
                 if (mesh.material && mesh.material.name) {
-                    output += `usemtl ${mesh.material.name}\n`;
+                    result += `usemtl ${mesh.material.name}\n`;
                 }
 
                 if (vertices !== undefined) {
+                    console.log(vertices);
                     for (let i in vertices) {
                         vertex.x = vertices.getX(i);
                         vertex.y = vertices.getY(i);
@@ -59,14 +60,14 @@ MyOBJExporter.prototype = {
 
                         vertex.applyMatrix4(mesh.matrixWorld);
 
-                        output += `v ${vertex.x} ${vertex.y} ${vertex.z}\n`;
+                        result += `v ${vertex.x} ${vertex.y} ${vertex.z}\n`;
                         vertexCnt++;
                     }
                 }
 
                 if (uvs !== undefined) {
                     for (let i in uvs) {
-                        output += `vt ${uvs.getX(i)} ${uvs.getY(i)}\n`;
+                        result += `vt ${uvs.getX(i)} ${uvs.getY(i)}\n`;
                         vertexUvsCnt++;
                     }
                 }
@@ -80,7 +81,7 @@ MyOBJExporter.prototype = {
 
                         normal.applyMatrix3(normalMatrix).normalize();
 
-                        output += `vn ${normal.x} ${normal.y} ${normal.z}\n`;
+                        result += `vn ${normal.x} ${normal.y} ${normal.z}\n`;
 
                         normalsCnt++;
                     }
@@ -92,7 +93,7 @@ MyOBJExporter.prototype = {
                             let k = indices.getX(i + j) + 1;
                             face[j] = (vertexIdx + k) + (normals || uvs ? '/' + (uvs ? (vertexUvsIdx + k) : '') + (normals ? '/' + (normalsIdx + k) : '' ) : '');
 
-                            output += `f ${face.join(' ')}\n`;
+                            result += `f ${face.join(' ')}\n`;
                         }
                     }
                 } else {
@@ -101,7 +102,7 @@ MyOBJExporter.prototype = {
                             let k = i + j + 1;
                             face[j] = (vertexIdx + k) + (normals || uvs ? '/' + (uvs ? (vertexUvsIdx + k) : '') + (normals ? '/' + (normalsIdx + k) : '' ) : '');
 
-                            output += `f ${face.join(' ')}\n`;
+                            result += `f ${face.join(' ')}\n`;
                         }
                     }
                 }
@@ -125,7 +126,7 @@ MyOBJExporter.prototype = {
             if (geometry instanceof BufferGeometry) {
                 let vertices = geometry.getAttribute('position');
 
-                output += `o ${line.name}\n`;
+                result += `o ${line.name}\n`;
 
                 if (vertices !== undefined) {
                     for (let i in vertices) {
@@ -135,18 +136,18 @@ MyOBJExporter.prototype = {
 
                         vertex.applyMatrix4(line.matrixWorld);
 
-                        output += `v ${vertex.x} ${vertex.y} ${vertex.z}\n`;
+                        result += `v ${vertex.x} ${vertex.y} ${vertex.z}\n`;
                         vertexCnt++;
                     }
                 }
 
                 if (type === 'Line') {
-                    output += `l ${vertices.map((_, idx) => idx + vertexIdx + 1).join(' ')}\n`;
+                    result += `l ${vertices.map((_, idx) => idx + vertexIdx + 1).join(' ')}\n`;
                 }
 
                 if (type === 'LineSegments') {
                     for (let i = 1; i <= vertices.count; i += 2) {
-                        output += `l ${vertexIdx + i} ${vertexIdx + i + 1}\n`;
+                        result += `l ${vertexIdx + i} ${vertexIdx + i + 1}\n`;
                     }
                 }
             } else {
@@ -166,26 +167,26 @@ MyOBJExporter.prototype = {
             if (geometry instanceof BufferGeometry) {
                 let vertices    = geometry.getAttribute('position');
                 let colors      = geometry.getAttribute('color');
-                output += `o ${points.name}\n`;
+                result += `o ${points.name}\n`;
 
                 if (vertices !== undefined) {
                     for (let i in vertices) {
                         vertex.fromBufferAttribute(vertices, i);
                         vertex.applyMatrix4(points.matrixWorld);
 
-                        output += `v ${vertex.x} ${vertex.y} ${vertex.z}`;
+                        result += `v ${vertex.x} ${vertex.y} ${vertex.z}`;
 
                         if (colors !== undefined) {
                             color.fromBufferAttribute(colors, i);
-                            output += ` ${color.r} ${color.g} ${color.b}`;
+                            result += ` ${color.r} ${color.g} ${color.b}`;
                         }
 
-                        output += '\n';
+                        result += '\n';
                         vertexCnt++;
                     }
                 }
 
-                output += `p ${vertices.map((_, idx) => idx + vertexIdx + 1).join(' ')}\n`;
+                result += `p ${vertices.map((_, idx) => idx + vertexIdx + 1).join(' ')}\n`;
                 
             } else {
                 console.log('Invalid geometry: ', geometry);
@@ -209,3 +210,5 @@ MyOBJExporter.prototype = {
 
     }
 };
+
+export { MyOBJExporter };
