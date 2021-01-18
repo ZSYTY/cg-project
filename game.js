@@ -2,7 +2,8 @@ import * as THREE from './three.js-master/three.js-master/build/three.module.js'
 import primMaze from './maze.js'
 // import {OBJLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
 // import {MTLLoader} from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
-import { MyMTLLoader, MyOBJLoader } from './myLoader.js'
+import {MyMTLLoader, MyOBJLoader} from './myLoader.js'
+// import {OBJLoader2} from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader2";
 
 var renderer, overview_camera, scene, stats, controls, gui, rotate = true, light;
 let follow_camera;
@@ -36,7 +37,7 @@ function init(config) {
     function initRenderer() {
         renderer = new THREE.WebGLRenderer({antialias: true, alpha: false}); //实例化渲染器
         renderer.setSize(width, height); //设置宽和高
-        renderer.domElement.setAttribute("id","fuck");
+        renderer.domElement.setAttribute("id", "fuck");
         parentDOM.appendChild(renderer.domElement); //添加到dom
     }
 
@@ -349,14 +350,42 @@ function init(config) {
     initAxes();
     initStats();
 
-    initGui();
+    // initGui();
 
     animate();
 }
 
+let won = false;
+
 function check_win() {
-    if (new THREE.Box3().setFromObject(chara).intersectsBox(dest_bb)) {
-        alert("你赢了！");
+    if (!won &&  new THREE.Box3().setFromObject(chara).intersectsBox(dest_bb)) {
+        let loader = new MyOBJLoader();
+        loader.load('assets/win.obj', function (model) {
+            let bb = new THREE.Box3().setFromObject(model);
+            let scale = barrier_size * 3 / Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
+            console.log(scale);
+            model.scale.set(scale, scale, scale);
+            bb = new THREE.Box3().setFromObject(model);
+            model.position.set(-(bb.min.x + bb.max.x) / 2, -(bb.min.y + bb.max.y) / 2, -(bb.min.z + bb.max.z) / 2);
+            model.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0).normalize(), Math.PI / 2);
+            bb = new THREE.Box3().setFromObject(model);
+            model.position.set(model.position.x + chara.position.x + 1 - (bb.min.x + bb.max.x) / 2,
+                model.position.y + chara.position.y + 1 - (bb.min.y + bb.max.y) / 2, model.position.z - (bb.min.z + bb.max.z) / 2 + new THREE.Box3().setFromObject(chara).max.z);
+            let material = new THREE.MeshPhongMaterial({color: '#FFFF80'});
+            model.traverse(child => {
+                if (child instanceof THREE.Mesh) {
+                    child.material = material;
+                }
+            });
+            console.log(check_win);
+            for (let i = scene.children.length - 1; i >= 0; --i) {
+                if (scene.children[i] instanceof THREE.Mesh && scene.children[i] !== base_floor && scene.children[i] !== chara) {
+                    scene.children[i].visible = false;
+                }
+            }
+            scene.add(model);
+            won = true;
+        }, null, null, null);
     }
 }
 
@@ -494,7 +523,7 @@ function saveBase64AsFile(base64, fileName) {
     link.click();
 }
 
-function screenShoot_clicked(){
+function screenShoot_clicked() {
     var image = new Image();
     renderer.render(scene, camera);//此处renderer为three.js里的渲染器，scene为场景 camera为相机
 
