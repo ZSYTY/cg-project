@@ -243,7 +243,7 @@ function init() {
     initCamera();
     console.log(camera);
     initMesh();
-    initAxes();
+    // initAxes();
     initStats();
     // initGui();
 

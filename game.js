@@ -128,7 +128,7 @@ function init(config) {
             }
             case 2: {
                 let g = new THREE.SphereBufferGeometry(barrier_size / 2, 360, 360);
-                //g.translate(0, 0, barrier_height / 2);
+                g.translate(0, 0, -barrier_height / 2 + barrier_size / 2);
                 return g;
             }
             case 3: {
@@ -203,7 +203,7 @@ function init(config) {
                 let bb = new THREE.Box3().setFromObject(model);
                 // scene.add(new THREE.Box3Helper(bb,0xFFFF00));
                 console.log(bb);
-                let scale = barrier_size * 0.95 / Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
+                let scale = barrier_size * 1.2 / Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
                 console.log(scale);
                 // scale = 0.1;
                 model.scale.set(scale, scale, scale);
@@ -211,7 +211,7 @@ function init(config) {
                 console.log(new THREE.Box3().setFromObject(model));
                 model.position.set(-(bb.min.x + bb.max.x) / 2, -(bb.min.y + bb.max.y) / 2, -(bb.min.z + bb.max.z) / 2);
                 console.log(new THREE.Box3().setFromObject(model));
-                model.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0).normalize(), Math.PI / 2);
+                model.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0).normalize(), Math.PI / 2)
                 console.log(new THREE.Box3().setFromObject(model));
                 bb = new THREE.Box3().setFromObject(model);
                 model.position.set(model.position.x - (bb.min.x + bb.max.x) / 2,
@@ -225,7 +225,7 @@ function init(config) {
                 // });
                 scene.add(model);
                 bb = new THREE.Box3().setFromObject(model);
-                model.position.y = -maze_r * barrier_size - 0.7 * barrier_size;
+                model.position.y = -maze_r * barrier_size - 0.5 * barrier_size;
                 model.position.x = -maze_c * barrier_size + 0.5 * barrier_size;
                 model.position.z += -bb.min.z;
                 barriers_bb.push(new THREE.Box3().setFromObject(model));
@@ -367,7 +367,7 @@ function init(config) {
 
     function initPosition() {
         let bb = new THREE.Box3().setFromObject(chara);
-        chara.position.y = -maze_r * barrier_size - 0.5 * barrier_size;
+        chara.position.y = -maze_r * barrier_size * barrier_size;
         chara.position.x = -maze_c * barrier_size + 0.5 * barrier_size;
         chara.position.z += -bb.min.z;
         update_follow_camera();
@@ -385,7 +385,7 @@ function init(config) {
     initLight();
     initCamera();
     initMesh();
-    initAxes();
+    // initAxes();
     initStats();
 
     // initGui();

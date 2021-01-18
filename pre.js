@@ -185,7 +185,7 @@ function init() {
     initLight();
     initCamera();
     initMesh();
-    initAxes();
+    // initAxes();
     initStats();
     // initGui();
 

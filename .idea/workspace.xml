@@ -4,6 +4,9 @@
     <list default="true" id="5180d9f3-1272-4e06-a083-e97a1b18e4ba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre.js" beforeDir="false" afterPath="$PROJECT_DIR$/pre.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_character.js" beforeDir="false" afterPath="$PROJECT_DIR$/pre_character.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_title.js" beforeDir="false" afterPath="$PROJECT_DIR$/pre_title.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610953627189</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="加了门，修复youwin碰撞检测bug">
+      <created>1610954290298</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1610954290298</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +196,7 @@
     <MESSAGE value="repair" />
     <MESSAGE value="移除gui，添加youwin" />
     <MESSAGE value="添加左右移动" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加左右移动" />
+    <MESSAGE value="加了门，修复youwin碰撞检测bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="加了门，修复youwin碰撞检测bug" />
   </component>
 </project>
