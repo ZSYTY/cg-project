@@ -180,7 +180,7 @@ export function start() {
         let data = exporter.parse(char);
         // console.log(exporter.parse(scene));
         const req = new XMLHttpRequest();
-        req.open('POST', "localhost", true);
+        req.open('POST', "/", true);
         req.responseType = 'blob';
         req.setRequestHeader('Content-Type', 'application/json');
         req.onload = () => {
