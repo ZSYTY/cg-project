@@ -2,7 +2,7 @@ import * as THREE from './three.js-master/three.js-master/build/three.module.js'
 // import { OBJLoader } from "./three.js-master/three.js-master/examples/jsm/loaders/OBJLoader.js";
 // import { MTLLoader } from "./three.js-master/three.js-master/examples/jsm/loaders/MTLLoader.js";
 import { MyMTLLoader, MyOBJLoader } from "./myLoader.js"
-
+export var char;
 function init() {
     var renderer, camera, scene, stats, controls, gui, rotate = true, light;
 
@@ -115,6 +115,7 @@ function init() {
                 //         child.material = material;
                 //     }
                 // });
+                char = model;
                 scene.add(model);
             }, null, null, null);
         });
