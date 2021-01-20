@@ -97,21 +97,21 @@ HTML5添加了许多新的语法特征，其中包括`<video>`、`<audio>`和`<c
 
 如下：迷宫的障碍包括了长方体、球、圆柱、圆锥、多面棱柱、多面棱台等体素。
 
-![image-20210120214748206](documentPic\image-20210120214748206.png)
+![image-20210120214748206](documentPic/image-20210120214748206.png)
 
 ##### 2. 具有基本三维网格导入导出功能（建议OBJ格式）。
 
 从obj文件中导入的标题模型和人物模型：
 
-![image-20210120214914949](documentPic\image-20210120214914949.png)
+![image-20210120214914949](documentPic/image-20210120214914949.png)
 
-![image-20210120215018765](documentPic\image-20210120215018765.png)
+![image-20210120215018765](documentPic/image-20210120215018765.png)
 
 导出obj文件，通过浏览器下载到本地：
 
-![image-20210120215147759](documentPic\image-20210120215147759.png)
+![image-20210120215147759](documentPic/image-20210120215147759.png)
 
-![image-20210120215126960](documentPic\image-20210120215126960.png)
+![image-20210120215126960](documentPic/image-20210120215126960.png)
 
 ##### 3. 具有基本材质、纹理的显示和编辑能力。
 
@@ -119,15 +119,15 @@ HTML5添加了许多新的语法特征，其中包括`<video>`、`<audio>`和`<c
 
 - 木头：
 
-  ![image-20210120215541192](documentPic\image-20210120215541192.png)
+  ![image-20210120215541192](documentPic/image-20210120215541192.png)
 
 - 金属：
 
-  ![image-20210120215500190](documentPic\image-20210120215500190.png)
+  ![image-20210120215500190](documentPic/image-20210120215500190.png)
 
 - 光滑：
 
-  ![image-20210120215616567](documentPic\image-20210120215616567.png)
+  ![image-20210120215616567](documentPic/image-20210120215616567.png)
 
 ##### 4. 具有基本几何变换功能（旋转、平移、缩放等）。
 
@@ -138,13 +138,13 @@ HTML5添加了许多新的语法特征，其中包括`<video>`、`<audio>`和`<c
 
 - 调整光源位置：游戏加载界面标题模型的光源位置循环移动：
 
-  ![image-20210120220320989](documentPic\image-20210120220320989.png)
+  ![image-20210120220320989](documentPic/image-20210120220320989.png)
 
-  ![image-20210120220335268](documentPic\image-20210120220335268.png)
+  ![image-20210120220335268](documentPic/image-20210120220335268.png)
 
 - 调整光源颜色：在游戏加载界面选择光照颜色，可改变游戏场景中的光照颜色，如改成蓝色：
 
-  ![image-20210120220453711](documentPic\image-20210120220453711.png)
+  ![image-20210120220453711](documentPic/image-20210120220453711.png)
 
 ##### 6. 能对建模后场景进行漫游如Zoom In/Out， Pan, Orbit, Zoom To Fit等观察功能。
 
@@ -152,29 +152,29 @@ HTML5添加了许多新的语法特征，其中包括`<video>`、`<audio>`和`<c
 
 - 在第三人称视角控制右侧摇杆可进行Zoom In/Out，如下:
 
-  ![image-20210120220744899](documentPic\image-20210120220744899.png)
+  ![image-20210120220744899](documentPic/image-20210120220744899.png)
 
-  ![image-20210120220804877](documentPic\image-20210120220804877.png)
+  ![image-20210120220804877](documentPic/image-20210120220804877.png)
 
 - 在第一或第三人称视角，操作左侧摇杆控制角色移动时，视角自动pan，如下：
 
-  ![image-20210120220938012](documentPic\image-20210120220938012.png)
+  ![image-20210120220938012](documentPic/image-20210120220938012.png)
 
-  ![image-20210120220950307](documentPic\image-20210120220950307.png)
+  ![image-20210120220950307](documentPic/image-20210120220950307.png)
 
 - 在第一或第三人称视角下，操作右侧摇杆可进行orbit，如下：
 
-  ![image-20210120221121925](documentPic\image-20210120221121925.png)
+  ![image-20210120221121925](documentPic/image-20210120221121925.png)
 
-  ![image-20210120221138075](documentPic\image-20210120221138075.png)
+  ![image-20210120221138075](documentPic/image-20210120221138075.png)
 
 ##### 7. 能够提供屏幕截取/保存功能。
 
 在游戏中可以导出截图并下载到本地：
 
-![image-20210120221233745](documentPic\image-20210120221233745.png)
+![image-20210120221233745](documentPic/image-20210120221233745.png)
 
-![image-20210120221248489](documentPic\image-20210120221248489.png)
+![image-20210120221248489](documentPic/image-20210120221248489.png)
 
 ##### 8. 漫游时可实时碰撞检测。
 
@@ -186,29 +186,29 @@ HTML5添加了许多新的语法特征，其中包括`<video>`、`<audio>`和`<c
 
 - PC端演示：
 
-  ![image-20210120221546655](documentPic\image-20210120221546655.png)
+  ![image-20210120221546655](documentPic/image-20210120221546655.png)
 
 - 移动端演示：
 
   加载界面：
 
-  ![Screenshot_20210120_221842_com.android.chrome](documentPic\Screenshot_20210120_221842_com.android.chrome.jpg)
+  ![Screenshot_20210120_221842_com.android.chrome](documentPic/Screenshot_20210120_221842_com.android.chrome.jpg)
 
   游戏界面：
 
-  ![Screenshot_20210120_221857_com.android.chrome](documentPic\Screenshot_20210120_221857_com.android.chrome.jpg)
+  ![Screenshot_20210120_221857_com.android.chrome](documentPic/Screenshot_20210120_221857_com.android.chrome.jpg)
 
   截图功能：
 
-  ![Screenshot_20210120_221921_com.android.chrome](documentPic\Screenshot_20210120_221921_com.android.chrome.jpg)
+  ![Screenshot_20210120_221921_com.android.chrome](documentPic/Screenshot_20210120_221921_com.android.chrome.jpg)
 
-  ![test](documentPic\test.jpg)
+  ![test](documentPic/test.jpg)
 
   游戏正常操作及胜利判断：
 
-  ![Screenshot_20210120_221959_com.android.chrome](documentPic\Screenshot_20210120_221959_com.android.chrome.jpg)
+  ![Screenshot_20210120_221959_com.android.chrome](documentPic/Screenshot_20210120_221959_com.android.chrome.jpg)
 
-  ![Screenshot_20210120_222005_com.android.chrome](documentPic\Screenshot_20210120_222005_com.android.chrome.jpg)
+  ![Screenshot_20210120_222005_com.android.chrome](documentPic/Screenshot_20210120_222005_com.android.chrome.jpg)
 
   验收时已展示，不再赘述。
 
