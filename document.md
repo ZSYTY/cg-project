@@ -158,15 +158,31 @@ HTML5添加了许多新的语法特征，其中包括`<video>`、`<audio>`和`<c
 
 - 在第一或第三人称视角，操作左侧摇杆控制角色移动时，视角自动pan，如下：
 
+  第三人称：
+
   ![image-20210120220938012](documentPic/image-20210120220938012.png)
 
   ![image-20210120220950307](documentPic/image-20210120220950307.png)
 
+  第一人称：
+
+  ![image-20210120225506632](documentPic/image-20210120225506632.png)
+
+  ![image-20210120225516502](documentPic/image-20210120225516502.png)
+
 - 在第一或第三人称视角下，操作右侧摇杆可进行orbit，如下：
 
-  ![image-20210120221121925](documentPic/image-20210120221121925.png)
+  第三人称：
 
+  ![image-20210120221121925](documentPic/image-20210120221121925.png)
+  
   ![image-20210120221138075](documentPic/image-20210120221138075.png)
+  
+  第一人称：
+  
+  ![image-20210120225352017](documentPic/image-20210120225352017.png)
+  
+  ![image-20210120225405387](documentPic/image-20210120225405387.png)
 
 ##### 7. 能够提供屏幕截取/保存功能。
 
