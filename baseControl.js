@@ -12,7 +12,10 @@ import {
     screenShoot_clicked,
 } from "./game.js";
 
-
+import { scene, barrier } from "./pre.js";
+import { char } from "./pre_character.js";
+import { MyOBJExporter } from "./myExporter.js"
+import { OBJExporter } from "./three.js-master/three.js-master/examples/jsm/exporters/OBJExporter.js"
 
 var humanSex = "sex-1";
 var lightColor = "color-1";
@@ -169,6 +172,28 @@ export function start() {
         }
     };
 
+    btn = window.document.getElementById("objOut");
+    btn.onmousedown = e => {
+
+        let exporter = new OBJExporter();
+        console.log(scene);
+        let data = exporter.parse(char);
+        // console.log(exporter.parse(scene));
+        const req = new XMLHttpRequest();
+        req.open('POST', "localhost", true);
+        req.responseType = 'blob';
+        req.setRequestHeader('Content-Type', 'application/json');
+        req.onload = () => {
+          const blob = new Blob([data],{type:"application/octet-stream"});
+          const blobUrl = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.style.display = 'none';
+          link.download = 'export.obj'; //文件名
+          link.href = blobUrl;
+          link.click();
+        };
+        req.send('');
+    }
 }
 
 // 按钮事件
